@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { getApiUrl, API_BASE_URL } from '../config/api';
 
 export default function History() {
   const [historyDocs, setHistoryDocs] = useState([]);
@@ -21,7 +22,7 @@ export default function History() {
     }
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/history', {
+      const res = await axios.get(getApiUrl('/api/history'), {
         headers: { Authorization: `Bearer ${token}` }
       });
       setHistoryDocs(res.data);
@@ -38,7 +39,7 @@ export default function History() {
     
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/history/${id}`, {
+      await axios.delete(getApiUrl(`/api/history/${id}`), {
         headers: { Authorization: `Bearer ${token}` }
       });
       // Optionally show a success toast here
@@ -184,14 +185,14 @@ export default function History() {
                 {selectedDoc.fileUrl ? (
                   selectedDoc.fileUrl.endsWith('.pdf') ? (
                     <iframe 
-                      src={`http://localhost:5000${selectedDoc.fileUrl}`} 
+                      src={`${API_BASE_URL}${selectedDoc.fileUrl}`} 
                       className="w-full h-full min-h-[500px] border border-white/5 rounded-xl bg-white"
                       title={selectedDoc.originalFilename}
                     />
                   ) : (
                     <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl">
                       <img 
-                        src={`http://localhost:5000${selectedDoc.fileUrl}`} 
+                        src={`${API_BASE_URL}${selectedDoc.fileUrl}`} 
                         alt={selectedDoc.originalFilename} 
                         className="max-w-full max-h-[70vh] object-contain" 
                       />

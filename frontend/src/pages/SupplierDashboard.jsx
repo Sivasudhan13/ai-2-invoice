@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getApiUrl } from '../config/api';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import SupplierAnalytics from './SupplierAnalytics';
@@ -26,7 +27,7 @@ export default function SupplierDashboard() {
       const token = localStorage.getItem('token');
       
       // Fetch stats
-      const statsResponse = await fetch('http://localhost:5000/api/invoice/supplier/stats', {
+      const statsResponse = await fetch(getApiUrl('/api/invoice/supplier/stats'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
@@ -41,7 +42,7 @@ export default function SupplierDashboard() {
       }
 
       // Fetch all invoices for analytics
-      const historyResponse = await fetch('http://localhost:5000/api/history', {
+      const historyResponse = await fetch(getApiUrl('/api/history'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
@@ -361,7 +362,7 @@ function UploadInvoiceModal({ onClose, onSuccess }) {
       formData.append('invoice', file);
 
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/invoice/upload', {
+      const response = await fetch(getApiUrl('/api/invoice/upload'), {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

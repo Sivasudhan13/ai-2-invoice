@@ -1,0 +1,42 @@
+services:
+  # Backend Service
+  - type: web
+    name: invoice-ocr-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: MAX_FILE_SIZE
+        value: 10485760
+      - key: ALLOWED_FILE_TYPES
+        value: application/pdf,image/jpeg,image/png,image/jpg
+
+  # Frontend Service
+  - type: web
+    name: invoice-ocr-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://ai-invoice-2f1n.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

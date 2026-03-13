@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import EditableField from './EditableField';
 import { generateConfidenceScores } from '../utils/confidenceScore';
 import { exportToCSV } from '../utils/csvExport';
+import { getApiUrl } from '../config/api';
 
 const STEPS = [
   { id: "upload",    label: "Upload",    icon: "📤" },
@@ -57,7 +58,7 @@ export default function InvoiceOCRDemo() {
         headers['Authorization'] = `Bearer ${token}`;
       }
 
-      const response = await fetch('http://localhost:5000/api/invoice/extract', {
+      const response = await fetch(getApiUrl('/api/invoice/extract'), {
         method: 'POST',
         headers: headers,
         body: formData

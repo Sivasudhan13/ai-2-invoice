@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getApiUrl } from '../config/api';
 
 export default function InvoiceUploadExtractor() {
   const [file, setFile] = useState(null);
@@ -56,7 +57,7 @@ export default function InvoiceUploadExtractor() {
         headers['Authorization'] = `Bearer ${token}`;
       }
 
-      const response = await fetch('http://localhost:5000/api/invoice/extract', {
+      const response = await fetch(getApiUrl('/api/invoice/extract'), {
         method: 'POST',
         headers,
         body: formData

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import OrganizationLayout from '../components/OrganizationLayout';
+import { getApiUrl } from '../config/api';
 
 export default function OrganizationAlerts() {
   const [alerts, setAlerts] = useState([]);
@@ -9,7 +10,7 @@ export default function OrganizationAlerts() {
   const fetchAlerts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/alerts', {
+      const response = await fetch(getApiUrl('/api/organization/alerts'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
@@ -31,7 +32,7 @@ export default function OrganizationAlerts() {
   const handleMarkAsReviewed = async (alertId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/organization/alerts/${alertId}`, {
+      const response = await fetch(getApiUrl(`/api/organization/alerts/${alertId}`), {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${token}` }
       });

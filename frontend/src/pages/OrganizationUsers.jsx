@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getApiUrl } from '../config/api';
 import { useAuth } from '../context/AuthContext';
 import OrganizationLayout from '../components/OrganizationLayout';
 
@@ -14,7 +15,7 @@ export default function OrganizationUsers() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/users', {
+      const response = await fetch(getApiUrl('/api/organization/users'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -36,7 +37,7 @@ export default function OrganizationUsers() {
   const handleCreateSupplier = async (formData) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/supplier', {
+      const response = await fetch(getApiUrl('/api/organization/supplier'), {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -62,7 +63,7 @@ export default function OrganizationUsers() {
   const handleCreateMentor = async (formData) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/mentor', {
+      const response = await fetch(getApiUrl('/api/organization/mentor'), {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

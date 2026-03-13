@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getApiUrl } from '../config/api';
 import OrganizationLayout from '../components/OrganizationLayout';
 
 export default function OrganizationInvoices() {
@@ -16,7 +17,7 @@ export default function OrganizationInvoices() {
       if (filters.startDate) params.append('startDate', filters.startDate);
       if (filters.endDate) params.append('endDate', filters.endDate);
       
-      const response = await fetch(`http://localhost:5000/api/organization/invoices?${params}`, {
+      const response = await fetch(getApiUrl(`/api/organization/invoices?${params}`), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       

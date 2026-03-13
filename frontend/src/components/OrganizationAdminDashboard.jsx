@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getApiUrl } from '../config/api';
 import { useAuth } from '../context/AuthContext';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import VendorAnalysisPanel from './VendorAnalysisPanel';
@@ -19,7 +20,7 @@ export default function OrganizationAdminDashboard() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/users', {
+      const response = await fetch(getApiUrl('/api/organization/users'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -35,7 +36,7 @@ export default function OrganizationAdminDashboard() {
   const fetchAnalytics = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/analytics', {
+      const response = await fetch(getApiUrl('/api/organization/analytics'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -51,7 +52,7 @@ export default function OrganizationAdminDashboard() {
   const fetchAlerts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/alerts', {
+      const response = await fetch(getApiUrl('/api/organization/alerts'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -67,7 +68,7 @@ export default function OrganizationAdminDashboard() {
   const fetchInvoices = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/organization/invoices', {
+      const response = await fetch(getApiUrl('/api/organization/invoices'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -107,7 +108,7 @@ export default function OrganizationAdminDashboard() {
         return;
       }
 
-      const url = 'http://localhost:5000/api/organization/supplier';
+      const url = getApiUrl('/api/organization/supplier');
       console.log('Request URL:', url);
       console.log('Request body:', JSON.stringify(formData));
 
@@ -178,7 +179,7 @@ export default function OrganizationAdminDashboard() {
         return;
       }
 
-      const url = 'http://localhost:5000/api/organization/mentor';
+      const url = getApiUrl('/api/organization/mentor');
       console.log('Request URL:', url);
 
       const response = await fetch(url, {
@@ -234,7 +235,7 @@ export default function OrganizationAdminDashboard() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/organization/user/${userId}`, {
+      const response = await fetch(getApiUrl(`/api/organization/user/${userId}`), {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -256,7 +257,7 @@ export default function OrganizationAdminDashboard() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/organization/invoice/${invoiceId}`, {
+      const response = await fetch(getApiUrl(`/api/organization/invoice/${invoiceId}`), {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -279,7 +280,7 @@ export default function OrganizationAdminDashboard() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/organization/alerts/${alertId}`, {
+      const response = await fetch(getApiUrl(`/api/organization/alerts/${alertId}`), {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
