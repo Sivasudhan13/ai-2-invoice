@@ -15,12 +15,12 @@ export default function OrganizationSettings() {
 
   return (
     <OrganizationLayout>
-      <div style={{ padding: 40, minHeight: '100vh', background: '#0f0f23' }}>
+      <div style={{ padding: 40, minHeight: '100vh', background: '#F8F2FE' }}>
         <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontSize: 32, fontWeight: 800, color: '#f1f5f9', marginBottom: 8 }}>
+          <h1 style={{ fontSize: 32, fontWeight: 800, color: '#242226', marginBottom: 8 }}>
             Settings
           </h1>
-          <p style={{ fontSize: 15, color: '#64748b' }}>
+          <p style={{ fontSize: 15, color: '#79758C' }}>
             Manage your organization settings and account
           </p>
         </div>
@@ -28,28 +28,28 @@ export default function OrganizationSettings() {
         <div style={{ display: 'grid', gap: 24, maxWidth: 800 }}>
           {/* Organization Info */}
           <div style={{
-            background: 'rgba(255,255,255,.04)',
-            border: '1px solid rgba(255,255,255,.07)',
+            background: 'rgba(255,255,255,.7)',
+            border: '1px solid rgba(171,81,242,.15)',
             borderRadius: 14,
             padding: 28
           }}>
-            <div style={{ fontSize: 18, fontWeight: 700, color: '#e2e8f0', marginBottom: 20 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: '#242226', marginBottom: 20 }}>
               Organization Information
             </div>
             <div style={{ display: 'grid', gap: 16 }}>
               <div>
-                <div style={{ fontSize: 12, color: '#64748b', marginBottom: 6, fontWeight: 600 }}>
+                <div style={{ fontSize: 12, color: '#79758C', marginBottom: 6, fontWeight: 600 }}>
                   ORGANIZATION NAME
                 </div>
-                <div style={{ fontSize: 16, color: '#e2e8f0', fontWeight: 600 }}>
+                <div style={{ fontSize: 16, color: '#242226', fontWeight: 600 }}>
                   {user?.organizationName || 'InvoiceAI Organization'}
                 </div>
               </div>
               <div>
-                <div style={{ fontSize: 12, color: '#64748b', marginBottom: 6, fontWeight: 600 }}>
+                <div style={{ fontSize: 12, color: '#79758C', marginBottom: 6, fontWeight: 600 }}>
                   ORGANIZATION ID
                 </div>
-                <div style={{ fontSize: 14, color: '#94a3b8', fontFamily: 'monospace' }}>
+                <div style={{ fontSize: 14, color: '#79758C', fontFamily: 'monospace' }}>
                   {user?.organizationId || 'N/A'}
                 </div>
               </div>
@@ -58,44 +58,44 @@ export default function OrganizationSettings() {
 
           {/* Account Info */}
           <div style={{
-            background: 'rgba(255,255,255,.04)',
-            border: '1px solid rgba(255,255,255,.07)',
+            background: 'rgba(255,255,255,.7)',
+            border: '1px solid rgba(171,81,242,.15)',
             borderRadius: 14,
             padding: 28
           }}>
-            <div style={{ fontSize: 18, fontWeight: 700, color: '#e2e8f0', marginBottom: 20 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: '#242226', marginBottom: 20 }}>
               Account Information
             </div>
             <div style={{ display: 'grid', gap: 16 }}>
               <div>
-                <div style={{ fontSize: 12, color: '#64748b', marginBottom: 6, fontWeight: 600 }}>
+                <div style={{ fontSize: 12, color: '#79758C', marginBottom: 6, fontWeight: 600 }}>
                   NAME
                 </div>
-                <div style={{ fontSize: 16, color: '#e2e8f0', fontWeight: 600 }}>
+                <div style={{ fontSize: 16, color: '#242226', fontWeight: 600 }}>
                   {user?.name || 'Admin User'}
                 </div>
               </div>
               <div>
-                <div style={{ fontSize: 12, color: '#64748b', marginBottom: 6, fontWeight: 600 }}>
+                <div style={{ fontSize: 12, color: '#79758C', marginBottom: 6, fontWeight: 600 }}>
                   EMAIL
                 </div>
-                <div style={{ fontSize: 14, color: '#94a3b8', fontFamily: 'monospace' }}>
+                <div style={{ fontSize: 14, color: '#79758C', fontFamily: 'monospace' }}>
                   {user?.email || 'admin@example.com'}
                 </div>
               </div>
               <div>
-                <div style={{ fontSize: 12, color: '#64748b', marginBottom: 6, fontWeight: 600 }}>
+                <div style={{ fontSize: 12, color: '#79758C', marginBottom: 6, fontWeight: 600 }}>
                   ROLE
                 </div>
                 <div style={{
                   display: 'inline-block',
                   padding: '6px 14px',
-                  background: 'rgba(108, 99, 255, 0.2)',
-                  border: '1px solid rgba(108, 99, 255, 0.4)',
+                  background: 'rgba(171, 81, 242, 0.2)',
+                  border: '1px solid rgba(171, 81, 242, 0.4)',
                   borderRadius: 8,
                   fontSize: 13,
                   fontWeight: 700,
-                  color: '#a78bfa',
+                  color: '#C9B4E0',
                   textTransform: 'uppercase'
                 }}>
                   {user?.role || 'organization_admin'}
@@ -106,12 +106,12 @@ export default function OrganizationSettings() {
 
           {/* Permissions */}
           <div style={{
-            background: 'rgba(255,255,255,.04)',
-            border: '1px solid rgba(255,255,255,.07)',
+            background: 'rgba(255,255,255,.7)',
+            border: '1px solid rgba(171,81,242,.15)',
             borderRadius: 14,
             padding: 28
           }}>
-            <div style={{ fontSize: 18, fontWeight: 700, color: '#e2e8f0', marginBottom: 20 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: '#242226', marginBottom: 20 }}>
               Permissions
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
@@ -128,10 +128,10 @@ export default function OrganizationSettings() {
                     padding: '12px 16px',
                     background: user?.permissions?.[perm.key] 
                       ? 'rgba(52, 211, 153, 0.1)' 
-                      : 'rgba(100, 116, 139, 0.1)',
+                      : 'rgba(121, 117, 140, 0.1)',
                     border: `1px solid ${user?.permissions?.[perm.key] 
                       ? 'rgba(52, 211, 153, 0.3)' 
-                      : 'rgba(100, 116, 139, 0.3)'}`,
+                      : 'rgba(121, 117, 140, 0.3)'}`,
                     borderRadius: 10,
                     display: 'flex',
                     alignItems: 'center',
@@ -143,14 +143,14 @@ export default function OrganizationSettings() {
                     <div style={{ 
                       fontSize: 13, 
                       fontWeight: 600, 
-                      color: user?.permissions?.[perm.key] ? '#34d399' : '#64748b' 
+                      color: user?.permissions?.[perm.key] ? '#34d399' : '#79758C' 
                     }}>
                       {perm.label}
                     </div>
                   </div>
                   <div style={{
                     fontSize: 18,
-                    color: user?.permissions?.[perm.key] ? '#34d399' : '#64748b'
+                    color: user?.permissions?.[perm.key] ? '#34d399' : '#79758C'
                   }}>
                     {user?.permissions?.[perm.key] ? '✓' : '✗'}
                   </div>
@@ -169,7 +169,7 @@ export default function OrganizationSettings() {
             <div style={{ fontSize: 18, fontWeight: 700, color: '#ef4444', marginBottom: 12 }}>
               Danger Zone
             </div>
-            <p style={{ fontSize: 14, color: '#94a3b8', marginBottom: 20 }}>
+            <p style={{ fontSize: 14, color: '#79758C', marginBottom: 20 }}>
               Logout from your account. You'll need to login again to access the dashboard.
             </p>
             <button
@@ -218,7 +218,7 @@ export default function OrganizationSettings() {
             zIndex: 1000
           }}>
             <div style={{
-              background: '#0f0f23',
+              background: '#F8F2FE',
               border: '2px solid rgba(239, 68, 68, 0.3)',
               borderRadius: 16,
               padding: '32px',
@@ -228,10 +228,10 @@ export default function OrganizationSettings() {
               <div style={{ fontSize: 24, marginBottom: 16, textAlign: 'center' }}>
                 🚪
               </div>
-              <div style={{ fontSize: 22, fontWeight: 700, color: '#e2e8f0', marginBottom: 12, textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 700, color: '#242226', marginBottom: 12, textAlign: 'center' }}>
                 Logout Confirmation
               </div>
-              <p style={{ fontSize: 15, color: '#94a3b8', marginBottom: 28, textAlign: 'center' }}>
+              <p style={{ fontSize: 15, color: '#79758C', marginBottom: 28, textAlign: 'center' }}>
                 Are you sure you want to logout? You'll need to login again to access your dashboard.
               </p>
               <div style={{ display: 'flex', gap: 12 }}>
@@ -256,10 +256,10 @@ export default function OrganizationSettings() {
                   style={{
                     flex: 1,
                     padding: '14px',
-                    background: 'rgba(255,255,255,.05)',
-                    border: '1px solid rgba(255,255,255,.1)',
+                    background: 'rgba(201,180,224,.3)',
+                    border: '1px solid rgba(171,81,242,.2)',
                     borderRadius: 10,
-                    color: '#94a3b8',
+                    color: '#79758C',
                     fontSize: 14,
                     fontWeight: 700,
                     cursor: 'pointer'

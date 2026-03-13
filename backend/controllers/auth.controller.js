@@ -86,18 +86,39 @@ export const signup = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+  console.log('\n=== LOGIN REQUEST ===');
+  console.log('Request body:', req.body);
+  
   try {
     const { email, password } = req.body;
 
     if (!email || !password) {
+      console.log('ERROR: Missing email or password');
       return res.status(400).json({
         success: false,
         error: 'Please provide email and password'
       });
     }
 
+    console.log('Looking for user with email:', email);
     const user = await User.findOne({ email }).populate('organizationId', 'name');
-    if (!user || !(await user.comparePassword(password))) {
+    
+    if (!user) {
+      console.log('ERROR: User not found');
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid credentials'
+      });
+    }
+
+    console.log('User found:', { id: user._id, name: user.name, role: user.role });
+    console.log('Comparing password...');
+    
+    const isMatch = await user.comparePassword(password);
+    console.log('Password match:', isMatch);
+    
+    if (!isMatch) {
+      console.log('ERROR: Password does not match');
       return res.status(401).json({
         success: false,
         error: 'Invalid credentials'
@@ -120,12 +141,16 @@ export const login = async (req, res) => {
       responseData.organizationName = user.organizationId.name;
     }
 
+    console.log('SUCCESS: Login successful');
+    console.log('=== END LOGIN ===\n');
+
     res.json({
       success: true,
       data: responseData
     });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('EXCEPTION in login:', error);
+    console.log('=== END LOGIN (ERROR) ===\n');
     res.status(500).json({
       success: false,
       error: error.message || 'Server error during login'

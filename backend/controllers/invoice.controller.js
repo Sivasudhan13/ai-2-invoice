@@ -6,6 +6,12 @@ import fs from 'fs/promises';
 import { extractTextFromImage } from '../services/ocr.service.js';
 import { extractInvoiceDataFromText } from '../services/gemini-text.service.js';
 
+// Fraud detection
+import { detectFraud } from '../services/fraud-detection.service.js';
+
+// Anomaly detection
+import { detectAnomalies } from '../services/anomaly-detection.service.js';
+
 /**
  * Calculate confidence scores for extracted invoice fields
  * Uses heuristics: empty/null = 0, partial data = 50, complete data = 80-100
@@ -126,11 +132,26 @@ export const uploadAndExtract = async (req, res) => {
 
     // Step 2: Send text to Gemini for structured extraction
     console.log('🤖 Step 2: Sending text to Gemini AI...');
-    const extractedData = await extractInvoiceDataFromText(extractedText);
+    const geminiResult = await extractInvoiceDataFromText(extractedText);
+    const extractedData = geminiResult.data;
+    const confidenceScores = geminiResult.confidenceScores;
     const usedMethod = 'OCR + Gemini AI';
 
-    // Calculate confidence scores for extracted fields
-    const confidenceScores = calculateConfidenceScores(extractedData);
+    // Perform fraud detection and anomaly detection
+    let fraudDetection = null;
+    let anomalyDetection = null;
+    
+    if (req.user) {
+      const organizationId = req.user.organizationId || null;
+      
+      // Run fraud detection
+      fraudDetection = await detectFraud(extractedData, req.user._id, organizationId);
+      console.log('🔍 Fraud Detection Result:', fraudDetection.fraud_status);
+      
+      // Run anomaly detection
+      anomalyDetection = await detectAnomalies(extractedData, req.user._id, organizationId);
+      console.log('📊 Anomaly Detection Result:', anomalyDetection.status);
+    }
 
     // Save to history if user is authenticated
     if (req.user) {
@@ -164,6 +185,8 @@ export const uploadAndExtract = async (req, res) => {
       success: true,
       data: extractedData,
       confidenceScores: confidenceScores,
+      fraudDetection: fraudDetection,
+      anomalyDetection: anomalyDetection,
       metadata: {
         filename: req.file.originalname,
         processingTime: `${processingTime}s`,

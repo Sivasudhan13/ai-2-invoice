@@ -18,10 +18,11 @@ export default function Navbar() {
       position: 'sticky',
       top: 0,
       zIndex: 1000,
-      background: 'rgba(15, 15, 35, 0.8)',
+      background: 'rgba(255, 255, 255, 0.9)',
       backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-      padding: '16px 0'
+      borderBottom: '1px solid rgba(171, 81, 242, 0.15)',
+      padding: '16px 0',
+      boxShadow: '0 2px 20px rgba(171, 81, 242, 0.1)'
     }}>
       <div style={{
         maxWidth: 1200,
@@ -36,7 +37,7 @@ export default function Navbar() {
           <div style={{
             width: 40,
             height: 40,
-            background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+            background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
             borderRadius: 10,
             display: 'flex',
             alignItems: 'center',
@@ -51,10 +52,10 @@ export default function Navbar() {
             </svg>
           </div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 18, color: '#f1f5f9', letterSpacing: '-0.02em' }}>
+            <div style={{ fontWeight: 800, fontSize: 18, color: '#242226', letterSpacing: '-0.02em' }}>
               InvoiceAI
             </div>
-            <div style={{ fontSize: 9, color: '#64748b', fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+            <div style={{ fontSize: 9, color: '#79758C', fontFamily: 'monospace', letterSpacing: '0.1em' }}>
               POWERED BY GEMINI
             </div>
           </div>
@@ -71,13 +72,29 @@ export default function Navbar() {
                 fontSize: 14,
                 fontWeight: 600,
                 textDecoration: 'none',
-                color: isActive('/dashboard') ? '#fff' : '#94a3b8',
-                background: isActive('/dashboard') ? 'rgba(108, 99, 255, 0.2)' : 'transparent',
-                border: isActive('/dashboard') ? '1px solid rgba(108, 99, 255, 0.5)' : '1px solid transparent',
+                color: isActive('/dashboard') ? '#fff' : '#79758C',
+                background: isActive('/dashboard') ? 'linear-gradient(135deg, #AB51F2, #C9B4E0)' : 'transparent',
+                border: isActive('/dashboard') ? 'none' : '1px solid transparent',
                 transition: 'all 0.2s'
               }}
             >
               📊 Dashboard
+            </Link>
+            <Link
+              to="/extractor"
+              style={{
+                padding: '10px 20px',
+                borderRadius: 8,
+                fontSize: 14,
+                fontWeight: 600,
+                textDecoration: 'none',
+                color: isActive('/extractor') ? '#fff' : '#79758C',
+                background: isActive('/extractor') ? 'linear-gradient(135deg, #AB51F2, #C9B4E0)' : 'transparent',
+                border: isActive('/extractor') ? 'none' : '1px solid transparent',
+                transition: 'all 0.2s'
+              }}
+            >
+              🤖 AI Extractor
             </Link>
             <Link
               to="/history"
@@ -87,9 +104,9 @@ export default function Navbar() {
                 fontSize: 14,
                 fontWeight: 600,
                 textDecoration: 'none',
-                color: isActive('/history') ? '#fff' : '#94a3b8',
-                background: isActive('/history') ? 'rgba(108, 99, 255, 0.2)' : 'transparent',
-                border: isActive('/history') ? '1px solid rgba(108, 99, 255, 0.5)' : '1px solid transparent',
+                color: isActive('/history') ? '#fff' : '#79758C',
+                background: isActive('/history') ? 'linear-gradient(135deg, #AB51F2, #C9B4E0)' : 'transparent',
+                border: isActive('/history') ? 'none' : '1px solid transparent',
                 transition: 'all 0.2s'
               }}
             >
@@ -104,10 +121,10 @@ export default function Navbar() {
             <>
               <div style={{
                 padding: '8px 16px',
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'rgba(201, 180, 224, 0.3)',
                 borderRadius: 8,
                 fontSize: 13,
-                color: '#a78bfa',
+                color: '#3C3867',
                 fontWeight: 600
               }}>
                 👤 {user?.name}
@@ -141,8 +158,8 @@ export default function Navbar() {
                   fontSize: 14,
                   fontWeight: 600,
                   textDecoration: 'none',
-                  color: '#94a3b8',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  color: '#79758C',
+                  border: '1px solid rgba(171, 81, 242, 0.2)',
                   transition: 'all 0.2s'
                 }}
               >
@@ -152,7 +169,7 @@ export default function Navbar() {
                 to="/signup"
                 style={{
                   padding: '10px 20px',
-                  background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+                  background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
                   borderRadius: 8,
                   fontSize: 14,
                   fontWeight: 600,

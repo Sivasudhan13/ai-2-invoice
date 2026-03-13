@@ -88,7 +88,7 @@ export default function OrganizationUsers() {
   if (loading) {
     return (
       <OrganizationLayout>
-        <div style={{ padding: 40, textAlign: 'center', color: '#a78bfa' }}>
+        <div style={{ padding: 40, textAlign: 'center', color: '#C9B4E0' }}>
           Loading users...
         </div>
       </OrganizationLayout>
@@ -97,13 +97,13 @@ export default function OrganizationUsers() {
 
   return (
     <OrganizationLayout>
-      <div style={{ padding: 40, minHeight: '100vh', background: '#0f0f23' }}>
+      <div style={{ padding: 40, minHeight: '100vh', background: '#F8F2FE' }}>
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontSize: 32, fontWeight: 800, color: '#f1f5f9', marginBottom: 8 }}>
+          <h1 style={{ fontSize: 32, fontWeight: 800, color: '#242226', marginBottom: 8 }}>
             User Management
           </h1>
-          <p style={{ fontSize: 15, color: '#64748b' }}>
+          <p style={{ fontSize: 15, color: '#79758C' }}>
             Manage suppliers and mentors in your organization
           </p>
         </div>
@@ -129,7 +129,7 @@ export default function OrganizationUsers() {
             onClick={() => setShowCreateSupplier(true)}
             style={{
               padding: '14px 24px',
-              background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+              background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
               border: 'none',
               borderRadius: 10,
               color: '#fff',
@@ -177,10 +177,10 @@ export default function OrganizationUsers() {
             <div style={{
               padding: 60,
               textAlign: 'center',
-              background: 'rgba(255,255,255,.04)',
-              border: '1px solid rgba(255,255,255,.07)',
+              background: 'rgba(255,255,255,.7)',
+              border: '1px solid rgba(171,81,242,.15)',
               borderRadius: 14,
-              color: '#64748b'
+              color: '#79758C'
             }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>👥</div>
               <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>No users yet</div>
@@ -191,8 +191,8 @@ export default function OrganizationUsers() {
               <div
                 key={u._id}
                 style={{
-                  background: 'rgba(255,255,255,.04)',
-                  border: '1px solid rgba(255,255,255,.07)',
+                  background: 'rgba(255,255,255,.7)',
+                  border: '1px solid rgba(171,81,242,.15)',
                   borderRadius: 14,
                   padding: '24px 28px',
                   display: 'flex',
@@ -202,11 +202,11 @@ export default function OrganizationUsers() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = 'rgba(255,255,255,.06)';
-                  e.currentTarget.style.borderColor = 'rgba(108, 99, 255, 0.3)';
+                  e.currentTarget.style.borderColor = 'rgba(171, 81, 242, 0.3)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,.04)';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,.07)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,.7)';
+                  e.currentTarget.style.borderColor = 'rgba(171,81,242,.15)';
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -215,7 +215,7 @@ export default function OrganizationUsers() {
                     height: 56,
                     borderRadius: '50%',
                     background: u.role === 'supplier' 
-                      ? 'linear-gradient(135deg, #6c63ff, #a78bfa)' 
+                      ? 'linear-gradient(135deg, #AB51F2, #C9B4E0)' 
                       : 'linear-gradient(135deg, #34d399, #10b981)',
                     display: 'flex',
                     alignItems: 'center',
@@ -225,13 +225,13 @@ export default function OrganizationUsers() {
                     {u.role === 'supplier' ? '📦' : '👁️'}
                   </div>
                   <div>
-                    <div style={{ fontSize: 18, fontWeight: 700, color: '#e2e8f0', marginBottom: 6 }}>
+                    <div style={{ fontSize: 18, fontWeight: 700, color: '#242226', marginBottom: 6 }}>
                       {u.name}
                     </div>
-                    <div style={{ fontSize: 14, color: '#64748b', fontFamily: 'monospace', marginBottom: 4 }}>
+                    <div style={{ fontSize: 14, color: '#79758C', fontFamily: 'monospace', marginBottom: 4 }}>
                       {u.email}
                     </div>
-                    <div style={{ fontSize: 12, color: '#475569' }}>
+                    <div style={{ fontSize: 12, color: '#79758C' }}>
                       Created: {new Date(u.createdAt).toLocaleDateString()}
                     </div>
                   </div>
@@ -240,15 +240,15 @@ export default function OrganizationUsers() {
                   <div style={{
                     padding: '8px 16px',
                     background: u.role === 'supplier' 
-                      ? 'rgba(108, 99, 255, 0.2)' 
+                      ? 'rgba(171, 81, 242, 0.2)' 
                       : 'rgba(52, 211, 153, 0.2)',
                     border: `1px solid ${u.role === 'supplier' 
-                      ? 'rgba(108, 99, 255, 0.4)' 
+                      ? 'rgba(171, 81, 242, 0.4)' 
                       : 'rgba(52, 211, 153, 0.4)'}`,
                     borderRadius: 8,
                     fontSize: 13,
                     fontWeight: 700,
-                    color: u.role === 'supplier' ? '#a78bfa' : '#34d399',
+                    color: u.role === 'supplier' ? '#C9B4E0' : '#34d399',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em'
                   }}>
@@ -258,14 +258,14 @@ export default function OrganizationUsers() {
                     padding: '8px 16px',
                     background: u.status === 'active' 
                       ? 'rgba(52, 211, 153, 0.1)' 
-                      : 'rgba(100, 116, 139, 0.1)',
+                      : 'rgba(121, 117, 140, 0.1)',
                     border: `1px solid ${u.status === 'active' 
                       ? 'rgba(52, 211, 153, 0.3)' 
-                      : 'rgba(100, 116, 139, 0.3)'}`,
+                      : 'rgba(121, 117, 140, 0.3)'}`,
                     borderRadius: 8,
                     fontSize: 13,
                     fontWeight: 700,
-                    color: u.status === 'active' ? '#34d399' : '#64748b'
+                    color: u.status === 'active' ? '#34d399' : '#79758C'
                   }}>
                     {u.status || 'active'}
                   </div>
@@ -349,20 +349,20 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
       zIndex: 1000
     }}>
       <div style={{
-        background: '#0f0f23',
-        border: '2px solid rgba(108, 99, 255, 0.3)',
+        background: '#F8F2FE',
+        border: '2px solid rgba(171, 81, 242, 0.3)',
         borderRadius: 16,
         padding: '32px',
         maxWidth: 500,
         width: '90%'
       }}>
-        <div style={{ fontSize: 22, fontWeight: 700, color: '#e2e8f0', marginBottom: 24 }}>
+        <div style={{ fontSize: 22, fontWeight: 700, color: '#242226', marginBottom: 24 }}>
           {title}
         </div>
 
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: 20 }}>
-            <label style={{ display: 'block', fontSize: 13, color: '#94a3b8', marginBottom: 8, fontWeight: 600 }}>
+            <label style={{ display: 'block', fontSize: 13, color: '#79758C', marginBottom: 8, fontWeight: 600 }}>
               Name
             </label>
             <input
@@ -372,10 +372,10 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
               style={{
                 width: '100%',
                 padding: '12px 16px',
-                background: 'rgba(255,255,255,.05)',
-                border: '1px solid rgba(255,255,255,.1)',
+                background: 'rgba(201,180,224,.3)',
+                border: '1px solid rgba(171,81,242,.2)',
                 borderRadius: 8,
-                color: '#e2e8f0',
+                color: '#242226',
                 fontSize: 14,
                 outline: 'none'
               }}
@@ -383,7 +383,7 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
           </div>
 
           <div style={{ marginBottom: 20 }}>
-            <label style={{ display: 'block', fontSize: 13, color: '#94a3b8', marginBottom: 8, fontWeight: 600 }}>
+            <label style={{ display: 'block', fontSize: 13, color: '#79758C', marginBottom: 8, fontWeight: 600 }}>
               Email
             </label>
             <input
@@ -393,10 +393,10 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
               style={{
                 width: '100%',
                 padding: '12px 16px',
-                background: 'rgba(255,255,255,.05)',
-                border: '1px solid rgba(255,255,255,.1)',
+                background: 'rgba(201,180,224,.3)',
+                border: '1px solid rgba(171,81,242,.2)',
                 borderRadius: 8,
-                color: '#e2e8f0',
+                color: '#242226',
                 fontSize: 14,
                 outline: 'none'
               }}
@@ -404,7 +404,7 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
           </div>
 
           <div style={{ marginBottom: 24 }}>
-            <label style={{ display: 'block', fontSize: 13, color: '#94a3b8', marginBottom: 8, fontWeight: 600 }}>
+            <label style={{ display: 'block', fontSize: 13, color: '#79758C', marginBottom: 8, fontWeight: 600 }}>
               Password
             </label>
             <input
@@ -414,10 +414,10 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
               style={{
                 width: '100%',
                 padding: '12px 16px',
-                background: 'rgba(255,255,255,.05)',
-                border: '1px solid rgba(255,255,255,.1)',
+                background: 'rgba(201,180,224,.3)',
+                border: '1px solid rgba(171,81,242,.2)',
                 borderRadius: 8,
-                color: '#e2e8f0',
+                color: '#242226',
                 fontSize: 14,
                 outline: 'none'
               }}
@@ -445,7 +445,7 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
               style={{
                 flex: 1,
                 padding: '14px',
-                background: loading ? 'rgba(108, 99, 255, 0.5)' : 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+                background: loading ? 'rgba(171, 81, 242, 0.5)' : 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
                 border: 'none',
                 borderRadius: 8,
                 color: '#fff',
@@ -463,10 +463,10 @@ function CreateUserModal({ title, onClose, onSubmit, error }) {
               style={{
                 flex: 1,
                 padding: '14px',
-                background: 'rgba(255,255,255,.05)',
-                border: '1px solid rgba(255,255,255,.1)',
+                background: 'rgba(201,180,224,.3)',
+                border: '1px solid rgba(171,81,242,.2)',
                 borderRadius: 8,
-                color: '#94a3b8',
+                color: '#79758C',
                 fontSize: 14,
                 fontWeight: 700,
                 cursor: loading ? 'not-allowed' : 'pointer'

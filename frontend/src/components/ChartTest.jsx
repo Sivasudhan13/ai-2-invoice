@@ -12,7 +12,7 @@ const ChartTest = () => {
   ];
 
   return (
-    <div style={{ width: '100%', height: 300, background: '#0f0f23', padding: '20px' }}>
+    <div style={{ width: '100%', height: 300, background: '#F8F2FE', padding: '20px' }}>
       <h2 style={{ color: '#fff', marginBottom: '20px' }}>Chart Library Test - Recharts</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
@@ -27,9 +27,9 @@ const ChartTest = () => {
           <Line 
             type="monotone" 
             dataKey="value" 
-            stroke="#6c63ff" 
+            stroke="#AB51F2" 
             strokeWidth={2}
-            dot={{ fill: '#6c63ff' }}
+            dot={{ fill: '#AB51F2' }}
           />
         </LineChart>
       </ResponsiveContainer>

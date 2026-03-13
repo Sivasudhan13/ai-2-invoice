@@ -153,11 +153,144 @@ Return ONLY the JSON structure, no explanations.`;
       }
     });
 
+    // Calculate confidence scores based on data quality
+    const confidenceScores = calculateConfidenceScores(extractedData, extractedText);
+
     console.log('✅ JSON parsed and validated successfully');
-    return extractedData;
+    console.log('📊 Confidence scores calculated');
+    
+    return { 
+      data: extractedData,
+      confidenceScores 
+    };
 
   } catch (error) {
     console.error('❌ Gemini extraction error:', error);
     throw new Error(`Failed to extract invoice data: ${error.message}`);
   }
 };
+
+// Calculate confidence scores based on data quality and completeness
+function calculateConfidenceScores(data, originalText) {
+  const scores = {};
+  
+  // Helper function to calculate field confidence
+  const getFieldConfidence = (value, fieldName, originalText) => {
+    if (!value || value === null || value === undefined) return 0;
+    
+    let score = 50; // Base score for having a value
+    
+    // Check if value exists in original text (case-insensitive)
+    const valueStr = String(value).toLowerCase();
+    const textLower = originalText.toLowerCase();
+    
+    if (textLower.includes(valueStr)) {
+      score += 30; // Found in original text
+    }
+    
+    // Length and format checks
+    if (typeof value === 'string') {
+      if (value.trim().length === 0) return 0;
+      if (value.trim().length < 2) return 40;
+      if (value.trim().length >= 3) score += 10;
+      
+      // Specific field validations
+      if (fieldName === 'gstin' && /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/.test(value)) {
+        score = 95; // Valid GSTIN format
+      }
+      if (fieldName === 'email' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        score = 95; // Valid email format
+      }
+      if (fieldName === 'phone' && /^[0-9]{10,}$/.test(value.replace(/[^0-9]/g, ''))) {
+        score = 90; // Valid phone format
+      }
+      if ((fieldName === 'invoice_date' || fieldName === 'due_date') && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        score = 92; // Valid date format
+      }
+    }
+    
+    if (typeof value === 'number') {
+      if (value === 0) return 50;
+      if (value > 0) score += 20;
+      if (value > 100) score += 10; // Reasonable invoice amounts
+    }
+    
+    return Math.min(100, score);
+  };
+  
+  // Calculate supplier confidence
+  if (data.supplier) {
+    scores.supplier = {};
+    Object.keys(data.supplier).forEach(key => {
+      scores.supplier[key] = getFieldConfidence(data.supplier[key], key, originalText);
+    });
+  }
+  
+  // Calculate invoice confidence
+  if (data.invoice) {
+    scores.invoice = {};
+    Object.keys(data.invoice).forEach(key => {
+      scores.invoice[key] = getFieldConfidence(data.invoice[key], key, originalText);
+    });
+  }
+  
+  // Calculate bill_to confidence
+  if (data.bill_to) {
+    scores.bill_to = {};
+    Object.keys(data.bill_to).forEach(key => {
+      scores.bill_to[key] = getFieldConfidence(data.bill_to[key], key, originalText);
+    });
+  }
+  
+  // Calculate items confidence (average of all items)
+  if (data.items && data.items.length > 0) {
+    const itemScores = data.items.map(item => {
+      const nameScore = getFieldConfidence(item.name, 'name', originalText);
+      const qtyScore = getFieldConfidence(item.qty, 'qty', originalText);
+      const rateScore = getFieldConfidence(item.rate, 'rate', originalText);
+      const amountScore = getFieldConfidence(item.amount, 'amount', originalText);
+      return (nameScore + qtyScore + rateScore + amountScore) / 4;
+    });
+    scores.items = Math.round(itemScores.reduce((a, b) => a + b, 0) / itemScores.length);
+  } else {
+    scores.items = 0;
+  }
+  
+  // Calculate tax confidence
+  if (data.tax) {
+    const taxValues = [data.tax.cgst, data.tax.sgst, data.tax.igst].filter(v => v > 0);
+    if (taxValues.length > 0) {
+      const taxScores = taxValues.map(v => getFieldConfidence(v, 'tax', originalText));
+      scores.tax = Math.round(taxScores.reduce((a, b) => a + b, 0) / taxScores.length);
+    } else {
+      scores.tax = 50; // Neutral score if no tax
+    }
+  }
+  
+  // Calculate totals confidence
+  if (data.totals) {
+    scores.totals = {};
+    Object.keys(data.totals).forEach(key => {
+      scores.totals[key] = getFieldConfidence(data.totals[key], key, originalText);
+    });
+    
+    // Boost confidence if calculations are consistent
+    if (data.items && data.items.length > 0) {
+      const calculatedSubTotal = data.items.reduce((sum, item) => sum + (item.amount || 0), 0);
+      if (Math.abs(calculatedSubTotal - (data.totals.sub_total || 0)) < 1) {
+        scores.totals.sub_total = Math.min(100, scores.totals.sub_total + 10);
+      }
+    }
+  }
+  
+  // Calculate bank details confidence
+  if (data.bank_details) {
+    scores.bank_details = {};
+    Object.keys(data.bank_details).forEach(key => {
+      scores.bank_details[key] = getFieldConfidence(data.bank_details[key], key, originalText);
+    });
+  }
+  
+  return scores;
+}
+

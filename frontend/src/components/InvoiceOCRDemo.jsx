@@ -25,7 +25,7 @@ export default function InvoiceOCRDemo() {
   const fileInputRef = useRef(null);
   const timers = useRef([]);
 
-  const addLog = (msg, color = "#94a3b8") => {
+  const addLog = (msg, color = "#79758C") => {
     setLogs(l => [...l, { msg, color, id: Date.now() + Math.random() }]);
   };
 
@@ -41,7 +41,7 @@ export default function InvoiceOCRDemo() {
     setError(null);
 
     try {
-      addLog(`📄 File received: ${file.name}`, "#94a3b8");
+      addLog(`📄 File received: ${file.name}`, "#79758C");
       setActiveStep(0);
 
       await new Promise(r => setTimeout(r, 600));
@@ -82,7 +82,7 @@ export default function InvoiceOCRDemo() {
       
       await new Promise(r => setTimeout(r, 400));
       addLog("✅ JSON generated successfully!", "#34d399");
-      addLog(`⚡ Extraction complete in ${result.metadata.processingTime}`, "#a78bfa");
+      addLog(`⚡ Extraction complete in ${result.metadata.processingTime}`, "#C9B4E0");
       
       // Generate confidence scores
       const scores = generateConfidenceScores(result.data);
@@ -169,15 +169,15 @@ export default function InvoiceOCRDemo() {
     if (!value && value !== 0) return null;
     return (
       <div style={{ marginBottom: 9 }}>
-        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", color: "#64748b", textTransform: "uppercase", marginBottom: 2, fontFamily: "monospace" }}>{label}</div>
+        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", color: "#79758C", textTransform: "uppercase", marginBottom: 2, fontFamily: "monospace" }}>{label}</div>
         <div style={{ fontSize: 13, color: "#0f172a", lineHeight: 1.4 }}>{String(value)}</div>
       </div>
     );
   };
 
   const Sec = ({ title, children }) => (
-    <div style={{ background: "#f8faff", border: "1px solid #e2e8f0", borderRadius: 10, padding: "14px 16px", marginBottom: 10 }}>
-      <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.14em", color: "#6c63ff", textTransform: "uppercase", marginBottom: 10, fontFamily: "monospace", borderBottom: "1px solid #e2e8f0", paddingBottom: 7 }}>{title}</div>
+    <div style={{ background: "#f8faff", border: "1px solid #242226", borderRadius: 10, padding: "14px 16px", marginBottom: 10 }}>
+      <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.14em", color: "#AB51F2", textTransform: "uppercase", marginBottom: 10, fontFamily: "monospace", borderBottom: "1px solid #242226", paddingBottom: 7 }}>{title}</div>
       {children}
     </div>
   );
@@ -185,7 +185,7 @@ export default function InvoiceOCRDemo() {
   const rawJson = extracted ? JSON.stringify(extracted, null, 2) : "";
 
   return (
-    <div className="flex-1 w-full relative z-10" style={{ fontFamily: "system-ui, sans-serif", color: "#f1f5f9" }}>
+    <div className="flex-1 w-full relative z-10" style={{ fontFamily: "system-ui, sans-serif", color: "#242226" }}>
       <style>{`
         *{box-sizing:border-box;margin:0;padding:0}
         @keyframes spin{to{transform:rotate(360deg)}}
@@ -202,21 +202,21 @@ export default function InvoiceOCRDemo() {
       `}</style>
 
       {/* Header */}
-      <div style={{ background: "rgba(255,255,255,.03)", borderBottom: "1px solid rgba(255,255,255,.07)", padding: "16px 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div style={{ background: "rgba(255,255,255,.7)", borderBottom: "1px solid rgba(171,81,242,.15)", padding: "16px 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 38, height: 38, background: "linear-gradient(135deg,#6c63ff,#a78bfa)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", animation: stage === "animating" ? "glow 2s infinite" : "none" }}>
+          <div style={{ width: 38, height: 38, background: "linear-gradient(135deg,#AB51F2,#C9B4E0)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", animation: stage === "animating" ? "glow 2s infinite" : "none" }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
             </svg>
           </div>
           <div>
             <div style={{ fontWeight: 800, fontSize: 17, letterSpacing: "-.01em" }}>InvoiceAI</div>
-            <div style={{ color: "#475569", fontSize: 10, fontFamily: "monospace", letterSpacing: "0.1em" }}>LIVE OCR</div>
+            <div style={{ color: "#79758C", fontSize: 10, fontFamily: "monospace", letterSpacing: "0.1em" }}>LIVE OCR</div>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ width: 8, height: 8, borderRadius: "50%", background: stage === "animating" ? "#34d399" : stage === "done" ? "#6c63ff" : "#475569", animation: stage === "animating" ? "pulse 1s infinite" : "none" }} />
-          <span style={{ fontSize: 11, fontFamily: "monospace", color: "#64748b", letterSpacing: "0.06em" }}>
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: stage === "animating" ? "#34d399" : stage === "done" ? "#AB51F2" : "#79758C", animation: stage === "animating" ? "pulse 1s infinite" : "none" }} />
+          <span style={{ fontSize: 11, fontFamily: "monospace", color: "#79758C", letterSpacing: "0.06em" }}>
             {stage === "idle" ? "READY" : stage === "animating" ? "PROCESSING" : "COMPLETE"}
           </span>
         </div>
@@ -230,17 +230,17 @@ export default function InvoiceOCRDemo() {
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
                 <div style={{
                   width: 44, height: 44, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18,
-                  background: activeStep > i ? "linear-gradient(135deg,#6c63ff,#a78bfa)" : activeStep === i && stage === "animating" ? "rgba(108,99,255,.2)" : "rgba(255,255,255,.05)",
-                  border: `2px solid ${activeStep >= i ? "#6c63ff" : "rgba(255,255,255,.1)"}`,
+                  background: activeStep > i ? "linear-gradient(135deg,#AB51F2,#C9B4E0)" : activeStep === i && stage === "animating" ? "rgba(108,99,255,.2)" : "rgba(201,180,224,.3)",
+                  border: `2px solid ${activeStep >= i ? "#AB51F2" : "rgba(171,81,242,.2)"}`,
                   transition: "all .4s",
                   animation: activeStep === i && stage === "animating" ? "pulse 1s infinite" : "none"
                 }}>
                   {activeStep > i ? "✓" : s.icon}
                 </div>
-                <span style={{ fontSize: 10, fontFamily: "monospace", color: activeStep >= i ? "#a78bfa" : "#475569", letterSpacing: "0.06em", fontWeight: 700 }}>{s.label}</span>
+                <span style={{ fontSize: 10, fontFamily: "monospace", color: activeStep >= i ? "#C9B4E0" : "#79758C", letterSpacing: "0.06em", fontWeight: 700 }}>{s.label}</span>
               </div>
               {i < STEPS.length - 1 && (
-                <div style={{ width: 60, height: 2, background: activeStep > i ? "linear-gradient(90deg,#6c63ff,#a78bfa)" : "rgba(255,255,255,.08)", margin: "0 6px", marginBottom: 22, transition: "all .4s" }} />
+                <div style={{ width: 60, height: 2, background: activeStep > i ? "linear-gradient(90deg,#AB51F2,#C9B4E0)" : "rgba(255,255,255,.08)", margin: "0 6px", marginBottom: 22, transition: "all .4s" }} />
               )}
             </div>
           ))}
@@ -256,8 +256,8 @@ export default function InvoiceOCRDemo() {
               onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
               style={{ 
-                background: dragOver ? "rgba(108,99,255,.15)" : "rgba(255,255,255,.04)", 
-                border: `2px dashed ${dragOver ? "#6c63ff" : "rgba(255,255,255,.15)"}`, 
+                background: dragOver ? "rgba(108,99,255,.15)" : "rgba(255,255,255,.7)", 
+                border: `2px dashed ${dragOver ? "#AB51F2" : "rgba(255,255,255,.15)"}`, 
                 borderRadius: 14, 
                 padding: "40px 20px", 
                 textAlign: "center", 
@@ -273,10 +273,10 @@ export default function InvoiceOCRDemo() {
                 style={{ display: "none" }}
               />
               <div style={{ fontSize: 48, marginBottom: 12 }}>📄</div>
-              <div style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0", marginBottom: 6 }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "#242226", marginBottom: 6 }}>
                 {uploadedFile ? uploadedFile.name : "Drop invoice here or click to upload"}
               </div>
-              <div style={{ fontSize: 11, color: "#64748b", fontFamily: "monospace" }}>
+              <div style={{ fontSize: 11, color: "#79758C", fontFamily: "monospace" }}>
                 Supports PDF, JPG, PNG (Max 10MB)
               </div>
             </div>
@@ -290,8 +290,8 @@ export default function InvoiceOCRDemo() {
 
             {/* AI Log Terminal */}
             <div style={{ background: "#0a0a1a", border: "1px solid rgba(108,99,255,.3)", borderRadius: 12, overflow: "hidden", marginBottom: 14 }}>
-              <div style={{ background: "rgba(108,99,255,.1)", padding: "8px 14px", fontSize: 10, fontFamily: "monospace", color: "#6c63ff", letterSpacing: "0.1em", fontWeight: 700, borderBottom: "1px solid rgba(108,99,255,.2)", display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#6c63ff", animation: stage === "animating" ? "pulse 1s infinite" : "none" }} />
+              <div style={{ background: "rgba(108,99,255,.1)", padding: "8px 14px", fontSize: 10, fontFamily: "monospace", color: "#AB51F2", letterSpacing: "0.1em", fontWeight: 700, borderBottom: "1px solid rgba(108,99,255,.2)", display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#AB51F2", animation: stage === "animating" ? "pulse 1s infinite" : "none" }} />
                 AI PROCESSING LOG
               </div>
               <div style={{ padding: 12, minHeight: 120, maxHeight: 160, overflowY: "auto", fontFamily: "monospace", fontSize: 11 }}>
@@ -304,9 +304,9 @@ export default function InvoiceOCRDemo() {
                   </div>
                 ))}
                 {stage === "animating" && (
-                  <div style={{ color: "#475569", display: "flex", gap: 3, alignItems: "center", marginTop: 4 }}>
+                  <div style={{ color: "#79758C", display: "flex", gap: 3, alignItems: "center", marginTop: 4 }}>
                     <span>Processing</span>
-                    {[0,1,2].map(i => <span key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: "#6c63ff", display: "inline-block", animation: `pulse 1.2s ${i*0.2}s infinite` }} />)}
+                    {[0,1,2].map(i => <span key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: "#AB51F2", display: "inline-block", animation: `pulse 1.2s ${i*0.2}s infinite` }} />)}
                   </div>
                 )}
               </div>
@@ -315,7 +315,7 @@ export default function InvoiceOCRDemo() {
             {/* Reset Button */}
             {stage === "done" && (
               <button className="hov" onClick={reset}
-                style={{ width: "100%", padding: "13px 10px", background: "rgba(255,255,255,.07)", color: "#94a3b8", borderRadius: 10, fontSize: 12, fontWeight: 700, fontFamily: "monospace", border: "1px solid rgba(255,255,255,.1)", cursor: "pointer" }}>
+                style={{ width: "100%", padding: "13px 10px", background: "rgba(171,81,242,.15)", color: "#79758C", borderRadius: 10, fontSize: 12, fontWeight: 700, fontFamily: "monospace", border: "1px solid rgba(171,81,242,.2)", cursor: "pointer" }}>
                 ↺ Upload Another Invoice
               </button>
             )}
@@ -329,9 +329,9 @@ export default function InvoiceOCRDemo() {
                   ["🎯 Status", "Success"],
                   ["💾 Format", "JSON"]
                 ].map(([l, v]) => (
-                  <div key={l} style={{ background: "rgba(255,255,255,.04)", border: "1px solid rgba(255,255,255,.07)", borderRadius: 9, padding: "10px 12px" }}>
-                    <div style={{ fontSize: 10, color: "#475569", fontFamily: "monospace", marginBottom: 2 }}>{l}</div>
-                    <div style={{ fontSize: 13, fontWeight: 800, color: "#a78bfa" }}>{v}</div>
+                  <div key={l} style={{ background: "rgba(255,255,255,.7)", border: "1px solid rgba(171,81,242,.15)", borderRadius: 9, padding: "10px 12px" }}>
+                    <div style={{ fontSize: 10, color: "#79758C", fontFamily: "monospace", marginBottom: 2 }}>{l}</div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: "#C9B4E0" }}>{v}</div>
                   </div>
                 ))}
               </div>
@@ -341,20 +341,20 @@ export default function InvoiceOCRDemo() {
           {/* RIGHT: Results */}
           {extracted && (
             <div className="fade">
-              <div style={{ display: "flex", gap: 5, marginBottom: 12, background: "rgba(255,255,255,.05)", borderRadius: 10, padding: 4 }}>
+              <div style={{ display: "flex", gap: 5, marginBottom: 12, background: "rgba(201,180,224,.3)", borderRadius: 10, padding: 4 }}>
                 {[["structured","📋 Structured View"],["raw","{ } Raw JSON"]].map(([id, label]) => (
                   <button key={id} className="hov" onClick={() => setTab(id)}
-                    style={{ flex: 1, padding: "9px", borderRadius: 7, fontSize: 12, fontWeight: 700, fontFamily: "monospace", background: tab === id ? "linear-gradient(135deg,#6c63ff,#a78bfa)" : "transparent", color: tab === id ? "#fff" : "#64748b", border: "none", cursor: "pointer" }}>
+                    style={{ flex: 1, padding: "9px", borderRadius: 7, fontSize: 12, fontWeight: 700, fontFamily: "monospace", background: tab === id ? "linear-gradient(135deg,#AB51F2,#C9B4E0)" : "transparent", color: tab === id ? "#fff" : "#79758C", border: "none", cursor: "pointer" }}>
                     {label}
                   </button>
                 ))}
               </div>
 
               <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-                <button className="hov" onClick={copy} style={{ flex: 1, padding: "9px", background: copied ? "#064e3b" : "rgba(255,255,255,.07)", color: copied ? "#34d399" : "#94a3b8", borderRadius: 8, fontSize: 11, fontWeight: 700, fontFamily: "monospace", border: "1px solid rgba(255,255,255,.08)", cursor: "pointer" }}>
+                <button className="hov" onClick={copy} style={{ flex: 1, padding: "9px", background: copied ? "#064e3b" : "rgba(171,81,242,.15)", color: copied ? "#34d399" : "#79758C", borderRadius: 8, fontSize: 11, fontWeight: 700, fontFamily: "monospace", border: "1px solid rgba(255,255,255,.08)", cursor: "pointer" }}>
                   {copied ? "✓ COPIED!" : "⎘ COPY JSON"}
                 </button>
-                <button className="hov" onClick={download} style={{ flex: 1, padding: "9px", background: "linear-gradient(135deg,#6c63ff,#a78bfa)", color: "#fff", borderRadius: 8, fontSize: 11, fontWeight: 700, fontFamily: "monospace", border: "none", cursor: "pointer" }}>
+                <button className="hov" onClick={download} style={{ flex: 1, padding: "9px", background: "linear-gradient(135deg,#AB51F2,#C9B4E0)", color: "#fff", borderRadius: 8, fontSize: 11, fontWeight: 700, fontFamily: "monospace", border: "none", cursor: "pointer" }}>
                   ↓ DOWNLOAD JSON
                 </button>
               </div>
@@ -364,13 +364,13 @@ export default function InvoiceOCRDemo() {
                   {/* Summary Banner */}
                   <div style={{ background: "linear-gradient(135deg,rgba(108,99,255,.2),rgba(167,139,250,.1))", border: "1px solid rgba(108,99,255,.3)", borderRadius: 12, padding: "16px 20px", marginBottom: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
-                      <div style={{ color: "#64748b", fontSize: 10, fontFamily: "monospace", letterSpacing: "0.1em" }}>INVOICE NUMBER</div>
+                      <div style={{ color: "#79758C", fontSize: 10, fontFamily: "monospace", letterSpacing: "0.1em" }}>INVOICE NUMBER</div>
                       <div style={{ color: "#fff", fontSize: 20, fontWeight: 800 }}>{extracted.invoice_number || "N/A"}</div>
-                      <div style={{ color: "#6c63ff", fontSize: 11, fontFamily: "monospace", marginTop: 3 }}>🔵 via Gemini Flash</div>
+                      <div style={{ color: "#AB51F2", fontSize: 11, fontFamily: "monospace", marginTop: 3 }}>🔵 via Gemini Flash</div>
                     </div>
                     <div style={{ textAlign: "right" }}>
-                      <div style={{ color: "#64748b", fontSize: 10, fontFamily: "monospace", letterSpacing: "0.1em" }}>GRAND TOTAL</div>
-                      <div style={{ color: "#a78bfa", fontSize: 28, fontWeight: 800 }}>{extracted.currency || "₹"}{extracted.grand_total?.toLocaleString("en-IN") || "0"}</div>
+                      <div style={{ color: "#79758C", fontSize: 10, fontFamily: "monospace", letterSpacing: "0.1em" }}>GRAND TOTAL</div>
+                      <div style={{ color: "#C9B4E0", fontSize: 28, fontWeight: 800 }}>{extracted.currency || "₹"}{extracted.grand_total?.toLocaleString("en-IN") || "0"}</div>
                       <div style={{ color: "#34d399", fontSize: 11, fontFamily: "monospace" }}>✓ Verified</div>
                     </div>
                   </div>
@@ -412,18 +412,18 @@ export default function InvoiceOCRDemo() {
                           <thead>
                             <tr style={{ background: "#e8eaf6" }}>
                               {["Description","Qty","Rate","Tax","Amount"].map(h => (
-                                <th key={h} style={{ padding: "7px 8px", textAlign: h === "Description" ? "left" : "right", color: "#64748b", fontWeight: 700, fontSize: 10, letterSpacing: "0.05em" }}>{h}</th>
+                                <th key={h} style={{ padding: "7px 8px", textAlign: h === "Description" ? "left" : "right", color: "#79758C", fontWeight: 700, fontSize: 10, letterSpacing: "0.05em" }}>{h}</th>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
                             {extracted.line_items?.map((it, i) => (
-                              <tr key={i} style={{ borderBottom: "1px solid #f1f5f9", background: i % 2 === 0 ? "#fff" : "#f8faff" }}>
+                              <tr key={i} style={{ borderBottom: "1px solid #242226", background: i % 2 === 0 ? "#fff" : "#f8faff" }}>
                                 <td style={{ padding: "7px 8px", color: "#0f172a", fontSize: 12 }}>{it.description}</td>
                                 <td style={{ padding: "7px 8px", textAlign: "right", color: "#334155" }}>{it.quantity} {it.unit || ""}</td>
                                 <td style={{ padding: "7px 8px", textAlign: "right", color: "#334155" }}>{extracted.currency || "₹"}{it.unit_price}</td>
                                 <td style={{ padding: "7px 8px", textAlign: "right", color: "#334155" }}>{it.tax_rate}%</td>
-                                <td style={{ padding: "7px 8px", textAlign: "right", color: "#6c63ff", fontWeight: 800 }}>{extracted.currency || "₹"}{it.amount?.toLocaleString("en-IN")}</td>
+                                <td style={{ padding: "7px 8px", textAlign: "right", color: "#AB51F2", fontWeight: 800 }}>{extracted.currency || "₹"}{it.amount?.toLocaleString("en-IN")}</td>
                               </tr>
                             ))}
                           </tbody>
@@ -442,13 +442,13 @@ export default function InvoiceOCRDemo() {
                         ["IGST", extracted.tax_details?.igst],
                         ["Total Tax", extracted.total_tax]
                       ].filter(([,v]) => v != null && v !== 0).map(([l, v]) => (
-                        <div key={l} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, fontFamily: "monospace", color: "#64748b" }}>
+                        <div key={l} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, fontFamily: "monospace", color: "#79758C" }}>
                           <span>{l}</span><span>{extracted.currency || "₹"}{v?.toLocaleString("en-IN")}</span>
                         </div>
                       ))}
                       <div style={{ borderTop: "2px solid #0f172a", paddingTop: 8, marginTop: 3, display: "flex", justifyContent: "space-between", fontWeight: 800, fontFamily: "monospace" }}>
                         <span style={{ color: "#0f172a", fontSize: 13 }}>GRAND TOTAL</span>
-                        <span style={{ color: "#6c63ff", fontSize: 17 }}>{extracted.currency || "₹"}{extracted.grand_total?.toLocaleString("en-IN")}</span>
+                        <span style={{ color: "#AB51F2", fontSize: 17 }}>{extracted.currency || "₹"}{extracted.grand_total?.toLocaleString("en-IN")}</span>
                       </div>
                     </div>
                   </Sec>
@@ -465,7 +465,7 @@ export default function InvoiceOCRDemo() {
 
                   {extracted.notes && (
                     <Sec title="Notes">
-                      <div style={{ fontSize: 12, color: "#475569", fontFamily: "monospace", lineHeight: 1.7 }}>{extracted.notes}</div>
+                      <div style={{ fontSize: 12, color: "#79758C", fontFamily: "monospace", lineHeight: 1.7 }}>{extracted.notes}</div>
                     </Sec>
                   )}
                 </div>
@@ -476,9 +476,9 @@ export default function InvoiceOCRDemo() {
                       const isKey  = /^\s*"[^"]+":\s/.test(line);
                       const isNull = line.includes(": null");
                       const isNum  = /:\s*[\d.]+/.test(line) && !/:\s*"/.test(line);
-                      let color = "#e2e8f0";
+                      let color = "#242226";
                       if (isKey)  color = "#fbbf24";
-                      if (isNull) color = "#475569";
+                      if (isNull) color = "#79758C";
                       if (isNum && !isKey)  color = "#86efac";
                       return <span key={i} style={{ color, display: "block" }}>{line}</span>;
                     })}

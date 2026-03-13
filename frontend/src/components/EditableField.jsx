@@ -29,7 +29,7 @@ export default function EditableField({ label, value, onChange, confidence = 'Hi
           fontSize: 9, 
           fontWeight: 700, 
           letterSpacing: '0.12em', 
-          color: '#64748b', 
+          color: '#79758C', 
           textTransform: 'uppercase', 
           fontFamily: 'monospace',
           display: 'flex',
@@ -50,10 +50,10 @@ export default function EditableField({ label, value, onChange, confidence = 'Hi
             onClick={() => setIsEditing(true)}
             style={{
               padding: '4px 8px',
-              background: 'rgba(108, 99, 255, 0.1)',
-              border: '1px solid rgba(108, 99, 255, 0.3)',
+              background: 'rgba(171, 81, 242, 0.1)',
+              border: '1px solid rgba(171, 81, 242, 0.3)',
               borderRadius: 4,
-              color: '#6c63ff',
+              color: '#AB51F2',
               fontSize: 10,
               cursor: 'pointer',
               fontWeight: 600
@@ -74,7 +74,7 @@ export default function EditableField({ label, value, onChange, confidence = 'Hi
               width: '100%',
               padding: '8px 10px',
               background: 'rgba(255, 255, 255, 0.9)',
-              border: '2px solid #6c63ff',
+              border: '2px solid #AB51F2',
               borderRadius: 6,
               fontSize: 13,
               color: '#0f172a',

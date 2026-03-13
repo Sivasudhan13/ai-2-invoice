@@ -58,19 +58,19 @@ export default function SupplierDashboard() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: '#0f0f23', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ color: '#a78bfa', fontSize: 18 }}>Loading dashboard...</div>
+      <div style={{ minHeight: '100vh', background: '#F8F2FE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ color: '#C9B4E0', fontSize: 18 }}>Loading dashboard...</div>
       </div>
     );
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f0f23' }}>
+    <div style={{ minHeight: '100vh', background: '#F8F2FE' }}>
       {/* Header */}
       <div style={{
-        background: 'rgba(15, 15, 35, 0.8)',
+        background: 'rgba(248, 242, 254, 0.8)',
         backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+        borderBottom: '1px solid rgba(171, 81, 242, 0.15)',
         padding: '20px 40px',
         display: 'flex',
         justifyContent: 'space-between',
@@ -80,7 +80,7 @@ export default function SupplierDashboard() {
           <div style={{
             width: 48,
             height: 48,
-            background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+            background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
             borderRadius: 12,
             display: 'flex',
             alignItems: 'center',
@@ -90,10 +90,10 @@ export default function SupplierDashboard() {
             📦
           </div>
           <div>
-            <div style={{ fontSize: 24, fontWeight: 800, color: '#f1f5f9' }}>
+            <div style={{ fontSize: 24, fontWeight: 800, color: '#242226' }}>
               Supplier Dashboard
             </div>
-            <div style={{ fontSize: 13, color: '#64748b' }}>
+            <div style={{ fontSize: 13, color: '#79758C' }}>
               Welcome back, {user?.name}
             </div>
           </div>
@@ -102,10 +102,10 @@ export default function SupplierDashboard() {
           onClick={() => navigate('/organization/settings')}
           style={{
             padding: '12px 24px',
-            background: 'rgba(255,255,255,.05)',
-            border: '1px solid rgba(255,255,255,.1)',
+            background: 'rgba(201,180,224,.3)',
+            border: '1px solid rgba(171,81,242,.2)',
             borderRadius: 10,
-            color: '#94a3b8',
+            color: '#79758C',
             fontSize: 14,
             fontWeight: 600,
             cursor: 'pointer'
@@ -123,13 +123,13 @@ export default function SupplierDashboard() {
             style={{
               padding: '12px 28px',
               background: activeTab === 'overview' 
-                ? 'linear-gradient(135deg, #6c63ff, #a78bfa)' 
-                : 'rgba(255,255,255,.04)',
+                ? 'linear-gradient(135deg, #AB51F2, #C9B4E0)' 
+                : 'rgba(255,255,255,.7)',
               border: activeTab === 'overview' 
                 ? 'none' 
-                : '1px solid rgba(255,255,255,.07)',
+                : '1px solid rgba(171,81,242,.15)',
               borderRadius: 10,
-              color: activeTab === 'overview' ? '#fff' : '#94a3b8',
+              color: activeTab === 'overview' ? '#fff' : '#79758C',
               fontSize: 14,
               fontWeight: 700,
               cursor: 'pointer',
@@ -143,13 +143,13 @@ export default function SupplierDashboard() {
             style={{
               padding: '12px 28px',
               background: activeTab === 'analytics' 
-                ? 'linear-gradient(135deg, #6c63ff, #a78bfa)' 
-                : 'rgba(255,255,255,.04)',
+                ? 'linear-gradient(135deg, #AB51F2, #C9B4E0)' 
+                : 'rgba(255,255,255,.7)',
               border: activeTab === 'analytics' 
                 ? 'none' 
-                : '1px solid rgba(255,255,255,.07)',
+                : '1px solid rgba(171,81,242,.15)',
               borderRadius: 10,
-              color: activeTab === 'analytics' ? '#fff' : '#94a3b8',
+              color: activeTab === 'analytics' ? '#fff' : '#79758C',
               fontSize: 14,
               fontWeight: 700,
               cursor: 'pointer',
@@ -165,18 +165,18 @@ export default function SupplierDashboard() {
             {/* Stats Cards */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginBottom: 40 }}>
               <div style={{
-                background: 'linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(167, 139, 250, 0.05))',
-                border: '1px solid rgba(108, 99, 255, 0.2)',
+                background: 'linear-gradient(135deg, rgba(171, 81, 242, 0.1), rgba(201, 180, 224, 0.05))',
+                border: '1px solid rgba(171, 81, 242, 0.2)',
                 borderRadius: 16,
                 padding: 28
               }}>
-                <div style={{ fontSize: 13, color: '#64748b', marginBottom: 8, fontWeight: 600 }}>
+                <div style={{ fontSize: 13, color: '#79758C', marginBottom: 8, fontWeight: 600 }}>
                   TOTAL INVOICES
                 </div>
-                <div style={{ fontSize: 36, fontWeight: 800, color: '#a78bfa', marginBottom: 4 }}>
+                <div style={{ fontSize: 36, fontWeight: 800, color: '#C9B4E0', marginBottom: 4 }}>
                   {stats.totalInvoices}
                 </div>
-                <div style={{ fontSize: 12, color: '#475569' }}>
+                <div style={{ fontSize: 12, color: '#79758C' }}>
                   Uploaded invoices
                 </div>
               </div>
@@ -187,13 +187,13 @@ export default function SupplierDashboard() {
                 borderRadius: 16,
                 padding: 28
               }}>
-                <div style={{ fontSize: 13, color: '#64748b', marginBottom: 8, fontWeight: 600 }}>
+                <div style={{ fontSize: 13, color: '#79758C', marginBottom: 8, fontWeight: 600 }}>
                   TOTAL AMOUNT
                 </div>
                 <div style={{ fontSize: 36, fontWeight: 800, color: '#34d399', marginBottom: 4 }}>
                   ₹{stats.totalAmount.toLocaleString('en-IN')}
                 </div>
-                <div style={{ fontSize: 12, color: '#475569' }}>
+                <div style={{ fontSize: 12, color: '#79758C' }}>
                   Total invoice value
                 </div>
               </div>
@@ -204,13 +204,13 @@ export default function SupplierDashboard() {
                 borderRadius: 16,
                 padding: 28
               }}>
-                <div style={{ fontSize: 13, color: '#64748b', marginBottom: 8, fontWeight: 600 }}>
+                <div style={{ fontSize: 13, color: '#79758C', marginBottom: 8, fontWeight: 600 }}>
                   AVG CONFIDENCE
                 </div>
                 <div style={{ fontSize: 36, fontWeight: 800, color: '#fbbf24', marginBottom: 4 }}>
                   {stats.avgConfidence}%
                 </div>
-                <div style={{ fontSize: 12, color: '#475569' }}>
+                <div style={{ fontSize: 12, color: '#79758C' }}>
                   Data extraction quality
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function SupplierDashboard() {
                 style={{
                   width: '100%',
                   padding: '24px',
-                  background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+                  background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
                   border: 'none',
                   borderRadius: 16,
                   color: '#fff',
@@ -235,7 +235,7 @@ export default function SupplierDashboard() {
                   justifyContent: 'center',
                   gap: 16,
                   transition: 'transform 0.2s',
-                  boxShadow: '0 10px 40px rgba(108, 99, 255, 0.3)'
+                  boxShadow: '0 10px 40px rgba(171, 81, 242, 0.3)'
                 }}
                 onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
                 onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
@@ -247,17 +247,17 @@ export default function SupplierDashboard() {
 
             {/* Recent Invoices */}
             <div style={{
-              background: 'rgba(255,255,255,.04)',
-              border: '1px solid rgba(255,255,255,.07)',
+              background: 'rgba(255,255,255,.7)',
+              border: '1px solid rgba(171,81,242,.15)',
               borderRadius: 16,
               padding: 32
             }}>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#f1f5f9', marginBottom: 24 }}>
+              <div style={{ fontSize: 22, fontWeight: 800, color: '#242226', marginBottom: 24 }}>
                 Recent Invoices
               </div>
               
               {stats.recentInvoices.length === 0 ? (
-                <div style={{ textAlign: 'center', padding: 60, color: '#64748b' }}>
+                <div style={{ textAlign: 'center', padding: 60, color: '#79758C' }}>
                   <div style={{ fontSize: 48, marginBottom: 16 }}>📄</div>
                   <div style={{ fontSize: 16, fontWeight: 600 }}>No invoices yet</div>
                   <div style={{ fontSize: 14, marginTop: 8 }}>Upload your first invoice to get started</div>
@@ -268,8 +268,8 @@ export default function SupplierDashboard() {
                     <div
                       key={invoice._id}
                       style={{
-                        background: 'rgba(255,255,255,.03)',
-                        border: '1px solid rgba(255,255,255,.07)',
+                        background: 'rgba(255,255,255,.7)',
+                        border: '1px solid rgba(171,81,242,.15)',
                         borderRadius: 12,
                         padding: '20px 24px',
                         display: 'flex',
@@ -278,21 +278,21 @@ export default function SupplierDashboard() {
                         transition: 'all 0.2s'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,.05)';
-                        e.currentTarget.style.borderColor = 'rgba(108, 99, 255, 0.3)';
+                        e.currentTarget.style.background = 'rgba(201,180,224,.3)';
+                        e.currentTarget.style.borderColor = 'rgba(171, 81, 242, 0.3)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,.03)';
-                        e.currentTarget.style.borderColor = 'rgba(255,255,255,.07)';
+                        e.currentTarget.style.background = 'rgba(255,255,255,.7)';
+                        e.currentTarget.style.borderColor = 'rgba(171,81,242,.15)';
                       }}
                     >
                       <div>
-                        <div style={{ fontSize: 16, fontWeight: 700, color: '#e2e8f0', marginBottom: 6 }}>
+                        <div style={{ fontSize: 16, fontWeight: 700, color: '#242226', marginBottom: 6 }}>
                           {invoice.extractedData?.invoice?.invoice_number || 
                            invoice.extractedData?.invoiceNumber || 
                            invoice.extractedData?.invoice_number || 'N/A'}
                         </div>
-                        <div style={{ fontSize: 13, color: '#64748b', fontFamily: 'monospace' }}>
+                        <div style={{ fontSize: 13, color: '#79758C', fontFamily: 'monospace' }}>
                           {new Date(invoice.createdAt).toLocaleString()}
                         </div>
                       </div>
@@ -398,8 +398,8 @@ function UploadInvoiceModal({ onClose, onSuccess }) {
       padding: 20
     }}>
       <div style={{
-        background: '#0f0f23',
-        border: '2px solid rgba(108, 99, 255, 0.3)',
+        background: '#F8F2FE',
+        border: '2px solid rgba(171, 81, 242, 0.3)',
         borderRadius: 20,
         padding: 40,
         maxWidth: 600,
@@ -407,29 +407,29 @@ function UploadInvoiceModal({ onClose, onSuccess }) {
         maxHeight: '90vh',
         overflow: 'auto'
       }}>
-        <div style={{ fontSize: 28, fontWeight: 800, color: '#e2e8f0', marginBottom: 24, textAlign: 'center' }}>
+        <div style={{ fontSize: 28, fontWeight: 800, color: '#242226', marginBottom: 24, textAlign: 'center' }}>
           📤 Upload Invoice
         </div>
 
         {/* File Input */}
         <div style={{
-          border: '2px dashed rgba(108, 99, 255, 0.3)',
+          border: '2px dashed rgba(171, 81, 242, 0.3)',
           borderRadius: 16,
           padding: 40,
           textAlign: 'center',
           marginBottom: 24,
-          background: 'rgba(108, 99, 255, 0.05)',
+          background: 'rgba(171, 81, 242, 0.05)',
           cursor: 'pointer',
           transition: 'all 0.2s'
         }}
         onClick={() => document.getElementById('file-input').click()}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = 'rgba(108, 99, 255, 0.5)';
-          e.currentTarget.style.background = 'rgba(108, 99, 255, 0.1)';
+          e.currentTarget.style.borderColor = 'rgba(171, 81, 242, 0.5)';
+          e.currentTarget.style.background = 'rgba(171, 81, 242, 0.1)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'rgba(108, 99, 255, 0.3)';
-          e.currentTarget.style.background = 'rgba(108, 99, 255, 0.05)';
+          e.currentTarget.style.borderColor = 'rgba(171, 81, 242, 0.3)';
+          e.currentTarget.style.background = 'rgba(171, 81, 242, 0.05)';
         }}
         >
           <input
@@ -442,17 +442,17 @@ function UploadInvoiceModal({ onClose, onSuccess }) {
           {preview ? (
             <div>
               <img src={preview} alt="Preview" style={{ maxWidth: '100%', maxHeight: 300, borderRadius: 12, marginBottom: 16 }} />
-              <div style={{ fontSize: 14, color: '#94a3b8', fontWeight: 600 }}>
+              <div style={{ fontSize: 14, color: '#79758C', fontWeight: 600 }}>
                 {file.name}
               </div>
             </div>
           ) : (
             <div>
               <div style={{ fontSize: 48, marginBottom: 16 }}>📁</div>
-              <div style={{ fontSize: 16, fontWeight: 700, color: '#e2e8f0', marginBottom: 8 }}>
+              <div style={{ fontSize: 16, fontWeight: 700, color: '#242226', marginBottom: 8 }}>
                 Click to select invoice image
               </div>
-              <div style={{ fontSize: 13, color: '#64748b' }}>
+              <div style={{ fontSize: 13, color: '#79758C' }}>
                 Supports JPG, PNG, JPEG formats
               </div>
             </div>
@@ -483,8 +483,8 @@ function UploadInvoiceModal({ onClose, onSuccess }) {
               flex: 1,
               padding: '16px',
               background: (!file || uploading) 
-                ? 'rgba(108, 99, 255, 0.3)' 
-                : 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+                ? 'rgba(171, 81, 242, 0.3)' 
+                : 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
               border: 'none',
               borderRadius: 12,
               color: '#fff',
@@ -508,10 +508,10 @@ function UploadInvoiceModal({ onClose, onSuccess }) {
             style={{
               flex: 1,
               padding: '16px',
-              background: 'rgba(255,255,255,.05)',
-              border: '1px solid rgba(255,255,255,.1)',
+              background: 'rgba(201,180,224,.3)',
+              border: '1px solid rgba(171,81,242,.2)',
               borderRadius: 12,
-              color: '#94a3b8',
+              color: '#79758C',
               fontSize: 16,
               fontWeight: 800,
               cursor: uploading ? 'not-allowed' : 'pointer'

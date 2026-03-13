@@ -72,7 +72,7 @@ export const getConfidenceColor = (confidence) => {
     case 'Low':
       return '#ef4444';
     default:
-      return '#64748b';
+      return '#79758C';
   }
 };
 

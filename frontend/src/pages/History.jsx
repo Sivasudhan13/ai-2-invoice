@@ -58,7 +58,7 @@ export default function History() {
   if (loading) {
     return (
       <div style={{ minHeight: 'calc(100vh - 72px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ width: 50, height: 50, border: '4px solid rgba(108,99,255,.2)', borderTopColor: '#6c63ff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+        <div style={{ width: 50, height: 50, border: '4px solid rgba(108,99,255,.2)', borderTopColor: '#AB51F2', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
       </div>
     );
   }
@@ -67,10 +67,10 @@ export default function History() {
     <div style={{ minHeight: 'calc(100vh - 72px)', padding: '40px 20px', position: 'relative', zIndex: 1 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div className="fade-in" style={{ marginBottom: 40 }}>
-          <h1 style={{ fontSize: 36, fontWeight: 800, color: '#f1f5f9', marginBottom: 8 }}>
+          <h1 style={{ fontSize: 36, fontWeight: 800, color: '#242226', marginBottom: 8 }}>
             📜 Extraction History
           </h1>
-          <p style={{ fontSize: 16, color: '#64748b' }}>
+          <p style={{ fontSize: 16, color: '#79758C' }}>
             View and manage your processed invoices
           </p>
         </div>
@@ -79,15 +79,15 @@ export default function History() {
           <div className="fade-in" style={{
             textAlign: 'center',
             padding: '80px 20px',
-            background: 'rgba(255, 255, 255, 0.03)',
+            background: 'rgba(255, 255, 255, 0.7)',
             borderRadius: 20,
-            border: '1px solid rgba(255, 255, 255, 0.1)'
+            border: '1px solid rgba(171, 81, 242, 0.2)'
           }}>
             <div style={{ fontSize: 64, marginBottom: 20 }}>📭</div>
-            <h3 style={{ fontSize: 24, fontWeight: 700, color: '#f1f5f9', marginBottom: 12 }}>
+            <h3 style={{ fontSize: 24, fontWeight: 700, color: '#242226', marginBottom: 12 }}>
               No History Yet
             </h3>
-            <p style={{ fontSize: 16, color: '#64748b' }}>
+            <p style={{ fontSize: 16, color: '#79758C' }}>
               Upload your first invoice to get started
             </p>
           </div>
@@ -98,9 +98,9 @@ export default function History() {
                 key={item._id}
                 className="fade-in"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'rgba(255, 255, 255, 0.7)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(108, 99, 255, 0.2)',
+                  border: '1px solid rgba(171, 81, 242, 0.2)',
                   borderRadius: 16,
                   padding: 20,
                   cursor: 'pointer',
@@ -109,7 +109,7 @@ export default function History() {
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(108, 99, 255, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(171, 81, 242, 0.3)';
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
@@ -121,7 +121,7 @@ export default function History() {
                   <div style={{
                     width: 48,
                     height: 48,
-                    background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+                    background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
                     borderRadius: 12,
                     display: 'flex',
                     alignItems: 'center',
@@ -133,31 +133,31 @@ export default function History() {
                     </svg>
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: '#f1f5f9', marginBottom: 4 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#242226', marginBottom: 4 }}>
                       {item.filename}
                     </div>
-                    <div style={{ fontSize: 11, color: '#64748b', fontFamily: 'monospace' }}>
+                    <div style={{ fontSize: 11, color: '#79758C', fontFamily: 'monospace' }}>
                       {new Date(item.createdAt).toLocaleDateString()}
                     </div>
                   </div>
                 </div>
 
                 <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontSize: 11, color: '#64748b', marginBottom: 4 }}>INVOICE NUMBER</div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: '#a78bfa' }}>
+                  <div style={{ fontSize: 11, color: '#79758C', marginBottom: 4 }}>INVOICE NUMBER</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: '#C9B4E0' }}>
                     {item.extractedData?.invoice_number || 'N/A'}
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 11, color: '#64748b', marginBottom: 4 }}>TOTAL</div>
+                    <div style={{ fontSize: 11, color: '#79758C', marginBottom: 4 }}>TOTAL</div>
                     <div style={{ fontSize: 14, fontWeight: 700, color: '#34d399' }}>
                       {item.extractedData?.currency || '₹'}{item.extractedData?.grand_total?.toLocaleString() || '0'}
                     </div>
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 11, color: '#64748b', marginBottom: 4 }}>ITEMS</div>
+                    <div style={{ fontSize: 11, color: '#79758C', marginBottom: 4 }}>ITEMS</div>
                     <div style={{ fontSize: 14, fontWeight: 700, color: '#fbbf24' }}>
                       {item.extractedData?.line_items?.length || 0}
                     </div>
@@ -214,7 +214,7 @@ export default function History() {
               maxWidth: 800,
               maxHeight: '90vh',
               background: '#0a0a1a',
-              border: '1px solid rgba(108, 99, 255, 0.3)',
+              border: '1px solid rgba(171, 81, 242, 0.3)',
               borderRadius: 20,
               overflow: 'hidden'
             }}
@@ -222,12 +222,12 @@ export default function History() {
           >
             <div style={{
               padding: '20px 24px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+              borderBottom: '1px solid rgba(171, 81, 242, 0.2)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center'
             }}>
-              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#f1f5f9' }}>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#242226' }}>
                 Invoice Details
               </h3>
               <button
@@ -235,10 +235,10 @@ export default function History() {
                 style={{
                   width: 36,
                   height: 36,
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(171, 81, 242, 0.2)',
                   border: 'none',
                   borderRadius: 8,
-                  color: '#94a3b8',
+                  color: '#79758C',
                   fontSize: 20,
                   cursor: 'pointer'
                 }}
@@ -253,7 +253,7 @@ export default function History() {
                 lineHeight: 1.8,
                 whiteSpace: 'pre-wrap',
                 wordBreak: 'break-word',
-                color: '#e2e8f0'
+                color: '#242226'
               }}>
                 {JSON.stringify(selectedItem.extractedData, null, 2)}
               </pre>

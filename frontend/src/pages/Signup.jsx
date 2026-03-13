@@ -42,13 +42,13 @@ export default function Signup() {
       justifyContent: 'center',
       padding: '32px 16px',
       minHeight: 'calc(100vh - 80px)',
-      background: '#0f0f23',
+      background: '#F8F2FE',
       position: 'relative'
     }}>
       <style>{`
         @keyframes glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.3); }
-          50% { box-shadow: 0 0 40px rgba(108, 99, 255, 0.7); }
+          0%, 100% { box-shadow: 0 0 20px rgba(171, 81, 242, 0.3); }
+          50% { box-shadow: 0 0 40px rgba(171, 81, 242, 0.7); }
         }
         @keyframes pulse {
           0%, 100% { opacity: 1; }
@@ -56,8 +56,8 @@ export default function Signup() {
         }
         .signup-input:focus {
           outline: none;
-          border-color: rgba(108, 99, 255, 0.5);
-          box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+          border-color: rgba(171, 81, 242, 0.5);
+          box-shadow: 0 0 0 3px rgba(171, 81, 242, 0.1);
         }
       `}</style>
       
@@ -71,12 +71,12 @@ export default function Signup() {
             width: 72,
             height: 72,
             borderRadius: 20,
-            background: 'linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(167, 139, 250, 0.2))',
-            border: '2px solid rgba(108, 99, 255, 0.3)',
+            background: 'linear-gradient(135deg, rgba(171, 81, 242, 0.2), rgba(201, 180, 224, 0.2))',
+            border: '2px solid rgba(171, 81, 242, 0.3)',
             marginBottom: 24,
             animation: 'glow 3s infinite'
           }}>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AB51F2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
               <circle cx="8.5" cy="7" r="4"></circle>
               <line x1="20" y1="8" x2="20" y2="14"></line>
@@ -86,7 +86,7 @@ export default function Signup() {
           <h2 style={{
             fontSize: 36,
             fontWeight: 800,
-            color: '#f1f5f9',
+            color: '#242226',
             marginBottom: 12,
             letterSpacing: '-0.02em'
           }}>
@@ -94,7 +94,7 @@ export default function Signup() {
           </h2>
           <p style={{
             fontSize: 15,
-            color: '#94a3b8',
+            color: '#79758C',
             fontWeight: 500
           }}>
             Join to manage your extracted invoices with AI
@@ -103,9 +103,9 @@ export default function Signup() {
 
         {/* Main Card */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.04)',
+          background: 'rgba(255, 255, 255, 0.7)',
           backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(171, 81, 242, 0.2)',
           borderRadius: 20,
           padding: 40,
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
@@ -115,7 +115,7 @@ export default function Signup() {
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent)',
+            background: 'linear-gradient(180deg, rgba(201, 180, 224, 0.3), transparent)',
             borderRadius: 20,
             pointerEvents: 'none'
           }} />
@@ -147,7 +147,7 @@ export default function Signup() {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
-                  color: '#94a3b8',
+                  color: '#79758C',
                   marginBottom: 8
                 }}>
                   Full Name
@@ -160,10 +160,10 @@ export default function Signup() {
                   style={{
                     width: '100%',
                     padding: '14px 18px',
-                    background: 'rgba(15, 23, 42, 0.5)',
-                    border: '1px solid rgba(100, 116, 139, 0.3)',
+                    background: 'rgba(201, 180, 224, 0.5)',
+                    border: '1px solid rgba(121, 117, 140, 0.3)',
                     borderRadius: 12,
-                    color: '#e2e8f0',
+                    color: '#242226',
                     fontSize: 15,
                     fontWeight: 500,
                     transition: 'all 0.2s'
@@ -182,7 +182,7 @@ export default function Signup() {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
-                  color: '#94a3b8',
+                  color: '#79758C',
                   marginBottom: 8
                 }}>
                   Email Address
@@ -195,10 +195,10 @@ export default function Signup() {
                   style={{
                     width: '100%',
                     padding: '14px 18px',
-                    background: 'rgba(15, 23, 42, 0.5)',
-                    border: '1px solid rgba(100, 116, 139, 0.3)',
+                    background: 'rgba(201, 180, 224, 0.5)',
+                    border: '1px solid rgba(121, 117, 140, 0.3)',
                     borderRadius: 12,
-                    color: '#e2e8f0',
+                    color: '#242226',
                     fontSize: 15,
                     fontWeight: 500,
                     transition: 'all 0.2s'
@@ -217,7 +217,7 @@ export default function Signup() {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
-                  color: '#94a3b8',
+                  color: '#79758C',
                   marginBottom: 8
                 }}>
                   Password
@@ -230,10 +230,10 @@ export default function Signup() {
                   style={{
                     width: '100%',
                     padding: '14px 18px',
-                    background: 'rgba(15, 23, 42, 0.5)',
-                    border: '1px solid rgba(100, 116, 139, 0.3)',
+                    background: 'rgba(201, 180, 224, 0.5)',
+                    border: '1px solid rgba(121, 117, 140, 0.3)',
                     borderRadius: 12,
-                    color: '#e2e8f0',
+                    color: '#242226',
                     fontSize: 15,
                     fontWeight: 500,
                     transition: 'all 0.2s'
@@ -252,7 +252,7 @@ export default function Signup() {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
-                  color: '#94a3b8',
+                  color: '#79758C',
                   marginBottom: 8
                 }}>
                   Account Type
@@ -265,10 +265,10 @@ export default function Signup() {
                     style={{
                       width: '100%',
                       padding: '14px 18px',
-                      background: 'rgba(15, 23, 42, 0.5)',
-                      border: '1px solid rgba(100, 116, 139, 0.3)',
+                      background: 'rgba(201, 180, 224, 0.5)',
+                      border: '1px solid rgba(121, 117, 140, 0.3)',
                       borderRadius: 12,
-                      color: '#e2e8f0',
+                      color: '#242226',
                       fontSize: 15,
                       fontWeight: 500,
                       cursor: 'pointer',
@@ -276,10 +276,10 @@ export default function Signup() {
                       transition: 'all 0.2s'
                     }}
                   >
-                    <option value="personal" style={{ background: '#1e293b', color: '#e2e8f0' }}>
+                    <option value="personal" style={{ background: '#1e293b', color: '#242226' }}>
                       Personal - Individual Use
                     </option>
-                    <option value="organization" style={{ background: '#1e293b', color: '#e2e8f0' }}>
+                    <option value="organization" style={{ background: '#1e293b', color: '#242226' }}>
                       Organization - Business Use
                     </option>
                   </select>
@@ -289,7 +289,7 @@ export default function Signup() {
                     top: '50%',
                     transform: 'translateY(-50%)',
                     pointerEvents: 'none',
-                    color: '#94a3b8'
+                    color: '#79758C'
                   }}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="6 9 12 15 18 9"></polyline>
@@ -307,7 +307,7 @@ export default function Signup() {
                 marginTop: 28,
                 width: '100%',
                 padding: '16px 24px',
-                background: isLoading ? 'rgba(108, 99, 255, 0.5)' : 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+                background: isLoading ? 'rgba(171, 81, 242, 0.5)' : 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
                 border: 'none',
                 borderRadius: 12,
                 color: '#fff',
@@ -316,7 +316,7 @@ export default function Signup() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
                 cursor: isLoading ? 'not-allowed' : 'pointer',
-                boxShadow: '0 0 30px rgba(108, 99, 255, 0.4)',
+                boxShadow: '0 0 30px rgba(171, 81, 242, 0.4)',
                 transition: 'all 0.2s',
                 display: 'flex',
                 alignItems: 'center',
@@ -326,13 +326,13 @@ export default function Signup() {
               onMouseEnter={(e) => {
                 if (!isLoading) {
                   e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 0 40px rgba(108, 99, 255, 0.6)';
+                  e.target.style.boxShadow = '0 0 40px rgba(171, 81, 242, 0.6)';
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isLoading) {
                   e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = '0 0 30px rgba(108, 99, 255, 0.4)';
+                  e.target.style.boxShadow = '0 0 30px rgba(171, 81, 242, 0.4)';
                 }
               }}
             >
@@ -362,9 +362,9 @@ export default function Signup() {
           textAlign: 'center',
           fontSize: 14
         }}>
-          <span style={{ color: '#94a3b8' }}>Already have an account? </span>
+          <span style={{ color: '#79758C' }}>Already have an account? </span>
           <Link to="/login" style={{
-            color: '#a78bfa',
+            color: '#AB51F2',
             fontWeight: 700,
             textDecoration: 'none',
             textTransform: 'uppercase',
@@ -372,8 +372,8 @@ export default function Signup() {
             fontSize: 13,
             transition: 'color 0.2s'
           }}
-          onMouseEnter={(e) => e.target.style.color = '#c4b5fd'}
-          onMouseLeave={(e) => e.target.style.color = '#a78bfa'}
+          onMouseEnter={(e) => e.target.style.color = '#C9B4E0'}
+          onMouseLeave={(e) => e.target.style.color = '#AB51F2'}
           >
             Sign In
           </Link>

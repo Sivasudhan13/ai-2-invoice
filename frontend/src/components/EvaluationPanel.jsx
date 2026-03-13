@@ -24,28 +24,28 @@ export default function EvaluationPanel({ validation, onClose }) {
         style={{
           width: '100%',
           maxWidth: 600,
-          background: 'linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(30, 30, 50, 0.95))',
-          border: '2px solid rgba(108, 99, 255, 0.5)',
+          background: 'linear-gradient(135deg, rgba(248, 242, 254, 0.95), rgba(30, 30, 50, 0.95))',
+          border: '2px solid rgba(171, 81, 242, 0.5)',
           borderRadius: 20,
           overflow: 'hidden',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(108, 99, 255, 0.3)'
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(171, 81, 242, 0.3)'
         }}
         onClick={(e) => e.stopPropagation()}>
         
         {/* Header */}
         <div style={{
           padding: '24px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          borderBottom: '1px solid rgba(171, 81, 242, 0.2)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          background: 'rgba(108, 99, 255, 0.1)'
+          background: 'rgba(171, 81, 242, 0.1)'
         }}>
           <div>
-            <h3 style={{ fontSize: 24, fontWeight: 800, color: '#f1f5f9', marginBottom: 4 }}>
+            <h3 style={{ fontSize: 24, fontWeight: 800, color: '#242226', marginBottom: 4 }}>
               📊 Extraction Evaluation
             </h3>
-            <p style={{ fontSize: 13, color: '#64748b' }}>
+            <p style={{ fontSize: 13, color: '#79758C' }}>
               Quality assessment and validation report
             </p>
           </div>
@@ -54,16 +54,16 @@ export default function EvaluationPanel({ validation, onClose }) {
             style={{
               width: 40,
               height: 40,
-              background: 'rgba(255, 255, 255, 0.1)',
+              background: 'rgba(171, 81, 242, 0.2)',
               border: 'none',
               borderRadius: 10,
-              color: '#94a3b8',
+              color: '#79758C',
               fontSize: 24,
               cursor: 'pointer',
               transition: 'all 0.2s'
             }}
             onMouseOver={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
-            onMouseOut={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.1)'}>
+            onMouseOut={(e) => e.target.style.background = 'rgba(171, 81, 242, 0.2)'}>
             ×
           </button>
         </div>
@@ -72,20 +72,20 @@ export default function EvaluationPanel({ validation, onClose }) {
         <div style={{ padding: 24 }}>
           {/* Score Card */}
           <div style={{
-            background: 'linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(167, 139, 250, 0.1))',
-            border: '2px solid rgba(108, 99, 255, 0.4)',
+            background: 'linear-gradient(135deg, rgba(171, 81, 242, 0.2), rgba(201, 180, 224, 0.1))',
+            border: '2px solid rgba(171, 81, 242, 0.4)',
             borderRadius: 16,
             padding: 24,
             marginBottom: 20,
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: 14, color: '#64748b', marginBottom: 8, fontWeight: 600, letterSpacing: '0.1em' }}>
+            <div style={{ fontSize: 14, color: '#79758C', marginBottom: 8, fontWeight: 600, letterSpacing: '0.1em' }}>
               ACCURACY SCORE
             </div>
             <div style={{
               fontSize: 72,
               fontWeight: 900,
-              background: `linear-gradient(135deg, ${getGradeColor(validation.grade)}, #a78bfa)`,
+              background: `linear-gradient(135deg, ${getGradeColor(validation.grade)}, #C9B4E0)`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               marginBottom: 8
@@ -130,7 +130,7 @@ export default function EvaluationPanel({ validation, onClose }) {
               }}>
                 {validation.isValid ? 'Validation Passed' : 'Validation Issues Found'}
               </div>
-              <div style={{ fontSize: 13, color: '#94a3b8' }}>
+              <div style={{ fontSize: 13, color: '#79758C' }}>
                 {validation.isValid 
                   ? 'All required fields extracted successfully'
                   : `${validation.errors.length} error(s), ${validation.warnings.length} warning(s)`
@@ -201,15 +201,15 @@ export default function EvaluationPanel({ validation, onClose }) {
 
           {/* Quality Metrics */}
           <div style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            background: 'rgba(255, 255, 255, 0.7)',
+            border: '1px solid rgba(171, 81, 242, 0.2)',
             borderRadius: 12,
             padding: 16
           }}>
             <div style={{
               fontSize: 12,
               fontWeight: 700,
-              color: '#a78bfa',
+              color: '#C9B4E0',
               marginBottom: 12,
               letterSpacing: '0.1em',
               textTransform: 'uppercase'
@@ -224,14 +224,14 @@ export default function EvaluationPanel({ validation, onClose }) {
                 ['Error Handling', validation.errors.length === 0 ? 'Passed ✓' : 'Failed ✗']
               ].map(([label, value]) => (
                 <div key={label} style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  background: 'rgba(201, 180, 224, 0.3)',
                   borderRadius: 8,
                   padding: 12
                 }}>
-                  <div style={{ fontSize: 10, color: '#64748b', marginBottom: 4, fontWeight: 600 }}>
+                  <div style={{ fontSize: 10, color: '#79758C', marginBottom: 4, fontWeight: 600 }}>
                     {label}
                   </div>
-                  <div style={{ fontSize: 13, color: '#f1f5f9', fontWeight: 700 }}>
+                  <div style={{ fontSize: 13, color: '#242226', fontWeight: 700 }}>
                     {value}
                   </div>
                 </div>
@@ -243,7 +243,7 @@ export default function EvaluationPanel({ validation, onClose }) {
         {/* Footer */}
         <div style={{
           padding: '16px 24px',
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          borderTop: '1px solid rgba(171, 81, 242, 0.2)',
           background: 'rgba(0, 0, 0, 0.2)',
           display: 'flex',
           justifyContent: 'flex-end'
@@ -252,7 +252,7 @@ export default function EvaluationPanel({ validation, onClose }) {
             onClick={onClose}
             style={{
               padding: '12px 24px',
-              background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+              background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
               border: 'none',
               borderRadius: 8,
               color: '#fff',

@@ -108,3 +108,42 @@ export const markAlertAsReviewed = async (req, res) => {
     });
   }
 };
+
+// Delete alert
+export const deleteAlert = async (req, res) => {
+  try {
+    if (req.user.role !== 'organization_admin') {
+      return res.status(403).json({
+        success: false,
+        error: 'Access denied - organization_admin role required'
+      });
+    }
+
+    const { id } = req.params;
+    const organizationId = req.user.organizationId;
+
+    const alert = await Alert.findOneAndDelete({
+      _id: id,
+      organizationId
+    });
+
+    if (!alert) {
+      return res.status(404).json({
+        success: false,
+        error: 'Alert not found or access denied'
+      });
+    }
+
+    res.json({
+      success: true,
+      message: 'Alert deleted successfully',
+      data: { id }
+    });
+  } catch (error) {
+    console.error('Delete alert error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to delete alert'
+    });
+  }
+};

@@ -82,64 +82,64 @@ export default function SupplierAnalytics({ invoices }) {
     );
   };
 
-  const COLORS = ['#34d399', '#6c63ff', '#fbbf24', '#ef4444'];
+  const COLORS = ['#34d399', '#AB51F2', '#fbbf24', '#ef4444'];
 
   return (
     <div style={{ display: 'grid', gap: 24 }}>
       {/* Monthly Upload Trend */}
       <div style={{
-        background: 'rgba(255,255,255,.04)',
-        border: '1px solid rgba(255,255,255,.07)',
+        background: 'rgba(255,255,255,.7)',
+        border: '1px solid rgba(171,81,242,.15)',
         borderRadius: 16,
         padding: 32
       }}>
-        <div style={{ fontSize: 20, fontWeight: 800, color: '#f1f5f9', marginBottom: 24 }}>
+        <div style={{ fontSize: 20, fontWeight: 800, color: '#242226', marginBottom: 24 }}>
           📈 Monthly Upload Trend
         </div>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={monthlyData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-            <XAxis dataKey="month" stroke="#64748b" style={{ fontSize: 12 }} />
-            <YAxis stroke="#64748b" style={{ fontSize: 12 }} />
+            <XAxis dataKey="month" stroke="#79758C" style={{ fontSize: 12 }} />
+            <YAxis stroke="#79758C" style={{ fontSize: 12 }} />
             <Tooltip
               contentStyle={{
-                background: 'rgba(15, 15, 35, 0.95)',
-                border: '1px solid rgba(108, 99, 255, 0.3)',
+                background: 'rgba(248, 242, 254, 0.95)',
+                border: '1px solid rgba(171, 81, 242, 0.3)',
                 borderRadius: 10,
-                color: '#e2e8f0'
+                color: '#242226'
               }}
             />
-            <Legend wrapperStyle={{ color: '#94a3b8' }} />
-            <Line type="monotone" dataKey="count" stroke="#6c63ff" strokeWidth={3} name="Invoices" />
+            <Legend wrapperStyle={{ color: '#79758C' }} />
+            <Line type="monotone" dataKey="count" stroke="#AB51F2" strokeWidth={3} name="Invoices" />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
       {/* Monthly Amount Trend */}
       <div style={{
-        background: 'rgba(255,255,255,.04)',
-        border: '1px solid rgba(255,255,255,.07)',
+        background: 'rgba(255,255,255,.7)',
+        border: '1px solid rgba(171,81,242,.15)',
         borderRadius: 16,
         padding: 32
       }}>
-        <div style={{ fontSize: 20, fontWeight: 800, color: '#f1f5f9', marginBottom: 24 }}>
+        <div style={{ fontSize: 20, fontWeight: 800, color: '#242226', marginBottom: 24 }}>
           💰 Monthly Invoice Value
         </div>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={monthlyData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-            <XAxis dataKey="month" stroke="#64748b" style={{ fontSize: 12 }} />
-            <YAxis stroke="#64748b" style={{ fontSize: 12 }} />
+            <XAxis dataKey="month" stroke="#79758C" style={{ fontSize: 12 }} />
+            <YAxis stroke="#79758C" style={{ fontSize: 12 }} />
             <Tooltip
               contentStyle={{
-                background: 'rgba(15, 15, 35, 0.95)',
+                background: 'rgba(248, 242, 254, 0.95)',
                 border: '1px solid rgba(52, 211, 153, 0.3)',
                 borderRadius: 10,
-                color: '#e2e8f0'
+                color: '#242226'
               }}
               formatter={(value) => `₹${value.toLocaleString('en-IN')}`}
             />
-            <Legend wrapperStyle={{ color: '#94a3b8' }} />
+            <Legend wrapperStyle={{ color: '#79758C' }} />
             <Bar dataKey="amount" fill="#34d399" name="Total Amount (₹)" />
           </BarChart>
         </ResponsiveContainer>
@@ -147,12 +147,12 @@ export default function SupplierAnalytics({ invoices }) {
 
       {/* Confidence Score Distribution */}
       <div style={{
-        background: 'rgba(255,255,255,.04)',
-        border: '1px solid rgba(255,255,255,.07)',
+        background: 'rgba(255,255,255,.7)',
+        border: '1px solid rgba(171,81,242,.15)',
         borderRadius: 16,
         padding: 32
       }}>
-        <div style={{ fontSize: 20, fontWeight: 800, color: '#f1f5f9', marginBottom: 24 }}>
+        <div style={{ fontSize: 20, fontWeight: 800, color: '#242226', marginBottom: 24 }}>
           🎯 Data Quality Distribution
         </div>
         <ResponsiveContainer width="100%" height={300}>
@@ -173,10 +173,10 @@ export default function SupplierAnalytics({ invoices }) {
             </Pie>
             <Tooltip
               contentStyle={{
-                background: 'rgba(15, 15, 35, 0.95)',
-                border: '1px solid rgba(108, 99, 255, 0.3)',
+                background: 'rgba(248, 242, 254, 0.95)',
+                border: '1px solid rgba(171, 81, 242, 0.3)',
                 borderRadius: 10,
-                color: '#e2e8f0'
+                color: '#242226'
               }}
             />
           </PieChart>
@@ -185,12 +185,12 @@ export default function SupplierAnalytics({ invoices }) {
 
       {/* Location Map Placeholder */}
       <div style={{
-        background: 'rgba(255,255,255,.04)',
-        border: '1px solid rgba(255,255,255,.07)',
+        background: 'rgba(255,255,255,.7)',
+        border: '1px solid rgba(171,81,242,.15)',
         borderRadius: 16,
         padding: 32
       }}>
-        <div style={{ fontSize: 20, fontWeight: 800, color: '#f1f5f9', marginBottom: 24 }}>
+        <div style={{ fontSize: 20, fontWeight: 800, color: '#242226', marginBottom: 24 }}>
           🗺️ Delivery Locations
         </div>
         <div style={{
@@ -202,13 +202,13 @@ export default function SupplierAnalytics({ invoices }) {
           justifyContent: 'center',
           flexDirection: 'column',
           gap: 16,
-          border: '1px solid rgba(255,255,255,.05)'
+          border: '1px solid rgba(201,180,224,.3)'
         }}>
           <div style={{ fontSize: 48 }}>🗺️</div>
-          <div style={{ fontSize: 16, color: '#94a3b8', fontWeight: 600 }}>
+          <div style={{ fontSize: 16, color: '#79758C', fontWeight: 600 }}>
             Interactive Map View
           </div>
-          <div style={{ fontSize: 13, color: '#64748b', textAlign: 'center', maxWidth: 400 }}>
+          <div style={{ fontSize: 13, color: '#79758C', textAlign: 'center', maxWidth: 400 }}>
             Map visualization showing delivery locations from invoice addresses will be displayed here.
             Requires Google Maps API or Mapbox integration.
           </div>

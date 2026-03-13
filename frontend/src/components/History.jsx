@@ -143,7 +143,7 @@ export default function History() {
       {/* Modal Detail View */}
       {selectedDoc && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 pb-20 sm:pb-6">
-          <div className="absolute inset-0 bg-[#0f0f23]/80 backdrop-blur-sm" onClick={() => setSelectedDoc(null)}></div>
+          <div className="absolute inset-0 bg-[#F8F2FE]/80 backdrop-blur-sm" onClick={() => setSelectedDoc(null)}></div>
           
           <div className="relative w-full max-w-6xl glass border border-indigo-500/30 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
             
@@ -177,7 +177,7 @@ export default function History() {
             </div>
 
             {/* Modal Body */}
-            <div className="flex flex-col lg:flex-row flex-1 min-h-0 overflow-hidden bg-[#0f0f23]">
+            <div className="flex flex-col lg:flex-row flex-1 min-h-0 overflow-hidden bg-[#F8F2FE]">
               
               {/* Left side: Original Image/PDF */}
               <div className="lg:w-1/2 p-6 flex items-center justify-center bg-black/40 border-r border-white/10 overflow-auto relative group">

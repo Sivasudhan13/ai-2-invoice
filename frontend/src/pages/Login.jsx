@@ -60,19 +60,19 @@ export default function Login() {
       <div className="fade-in" style={{
         width: '100%',
         maxWidth: 440,
-        background: 'rgba(255, 255, 255, 0.03)',
+        background: 'rgba(255, 255, 255, 0.7)',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(108, 99, 255, 0.2)',
+        border: '1px solid rgba(171, 81, 242, 0.2)',
         borderRadius: 20,
         padding: '48px 40px',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(108, 99, 255, 0.1)'
+        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(171, 81, 242, 0.1)'
       }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <div style={{
             width: 70,
             height: 70,
-            background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+            background: 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
             borderRadius: 16,
             display: 'flex',
             alignItems: 'center',
@@ -85,10 +85,10 @@ export default function Login() {
               <polyline points="14 2 14 8 20 8"/>
             </svg>
           </div>
-          <h1 style={{ fontSize: 28, fontWeight: 800, color: '#f1f5f9', marginBottom: 8 }}>
+          <h1 style={{ fontSize: 28, fontWeight: 800, color: '#242226', marginBottom: 8 }}>
             Welcome Back
           </h1>
-          <p style={{ fontSize: 14, color: '#64748b' }}>
+          <p style={{ fontSize: 14, color: '#79758C' }}>
             Sign in to continue to InvoiceAI
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function Login() {
               display: 'block',
               fontSize: 13,
               fontWeight: 600,
-              color: '#94a3b8',
+              color: '#79758C',
               marginBottom: 8
             }}>
               Email Address
@@ -129,16 +129,16 @@ export default function Login() {
               style={{
                 width: '100%',
                 padding: '14px 16px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: 'rgba(201, 180, 224, 0.3)',
+                border: '1px solid rgba(171, 81, 242, 0.2)',
                 borderRadius: 10,
-                color: '#f1f5f9',
+                color: '#242226',
                 fontSize: 14,
                 outline: 'none',
                 transition: 'all 0.2s'
               }}
-              onFocus={(e) => e.target.style.borderColor = '#6c63ff'}
-              onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+              onFocus={(e) => e.target.style.borderColor = '#AB51F2'}
+              onBlur={(e) => e.target.style.borderColor = 'rgba(171, 81, 242, 0.2)'}
               placeholder="you@example.com"
             />
           </div>
@@ -148,7 +148,7 @@ export default function Login() {
               display: 'block',
               fontSize: 13,
               fontWeight: 600,
-              color: '#94a3b8',
+              color: '#79758C',
               marginBottom: 8
             }}>
               Password
@@ -161,16 +161,16 @@ export default function Login() {
               style={{
                 width: '100%',
                 padding: '14px 16px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: 'rgba(201, 180, 224, 0.3)',
+                border: '1px solid rgba(171, 81, 242, 0.2)',
                 borderRadius: 10,
-                color: '#f1f5f9',
+                color: '#242226',
                 fontSize: 14,
                 outline: 'none',
                 transition: 'all 0.2s'
               }}
-              onFocus={(e) => e.target.style.borderColor = '#6c63ff'}
-              onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+              onFocus={(e) => e.target.style.borderColor = '#AB51F2'}
+              onBlur={(e) => e.target.style.borderColor = 'rgba(171, 81, 242, 0.2)'}
               placeholder="••••••••"
             />
           </div>
@@ -181,7 +181,7 @@ export default function Login() {
             style={{
               width: '100%',
               padding: '16px',
-              background: loading ? 'rgba(108, 99, 255, 0.5)' : 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+              background: loading ? 'rgba(171, 81, 242, 0.5)' : 'linear-gradient(135deg, #AB51F2, #C9B4E0)',
               border: 'none',
               borderRadius: 10,
               color: '#fff',
@@ -218,11 +218,11 @@ export default function Login() {
           marginTop: 24,
           textAlign: 'center',
           fontSize: 14,
-          color: '#64748b'
+          color: '#79758C'
         }}>
           Don't have an account?{' '}
           <Link to="/signup" style={{
-            color: '#6c63ff',
+            color: '#AB51F2',
             textDecoration: 'none',
             fontWeight: 600
           }}>

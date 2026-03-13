@@ -53,7 +53,7 @@ export default function OrganizationAlerts() {
   if (loading) {
     return (
       <OrganizationLayout>
-        <div style={{ padding: 40, textAlign: 'center', color: '#a78bfa' }}>
+        <div style={{ padding: 40, textAlign: 'center', color: '#C9B4E0' }}>
           Loading alerts...
         </div>
       </OrganizationLayout>
@@ -62,12 +62,12 @@ export default function OrganizationAlerts() {
 
   return (
     <OrganizationLayout>
-      <div style={{ padding: 40, minHeight: '100vh', background: '#0f0f23' }}>
+      <div style={{ padding: 40, minHeight: '100vh', background: '#F8F2FE' }}>
         <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontSize: 32, fontWeight: 800, color: '#f1f5f9', marginBottom: 8 }}>
+          <h1 style={{ fontSize: 32, fontWeight: 800, color: '#242226', marginBottom: 8 }}>
             Data Quality Alerts
           </h1>
-          <p style={{ fontSize: 15, color: '#64748b' }}>
+          <p style={{ fontSize: 15, color: '#79758C' }}>
             Review invoices with low confidence scores
           </p>
         </div>
@@ -85,13 +85,13 @@ export default function OrganizationAlerts() {
               style={{
                 padding: '12px 24px',
                 background: filter === tab.key 
-                  ? 'rgba(108, 99, 255, 0.2)' 
-                  : 'rgba(255,255,255,.04)',
+                  ? 'rgba(171, 81, 242, 0.2)' 
+                  : 'rgba(255,255,255,.7)',
                 border: filter === tab.key 
-                  ? '2px solid rgba(108, 99, 255, 0.4)' 
-                  : '1px solid rgba(255,255,255,.07)',
+                  ? '2px solid rgba(171, 81, 242, 0.4)' 
+                  : '1px solid rgba(171,81,242,.15)',
                 borderRadius: 10,
-                color: filter === tab.key ? '#a78bfa' : '#94a3b8',
+                color: filter === tab.key ? '#C9B4E0' : '#79758C',
                 fontSize: 14,
                 fontWeight: 700,
                 cursor: 'pointer',
@@ -107,7 +107,7 @@ export default function OrganizationAlerts() {
               }}
               onMouseLeave={(e) => {
                 if (filter !== tab.key) {
-                  e.target.style.background = 'rgba(255,255,255,.04)';
+                  e.target.style.background = 'rgba(255,255,255,.7)';
                 }
               }}
             >
@@ -115,8 +115,8 @@ export default function OrganizationAlerts() {
               <span style={{
                 padding: '4px 10px',
                 background: filter === tab.key 
-                  ? 'rgba(108, 99, 255, 0.3)' 
-                  : 'rgba(255,255,255,.1)',
+                  ? 'rgba(171, 81, 242, 0.3)' 
+                  : 'rgba(171,81,242,.2)',
                 borderRadius: 6,
                 fontSize: 12,
                 fontWeight: 800
@@ -133,10 +133,10 @@ export default function OrganizationAlerts() {
             <div style={{
               padding: 60,
               textAlign: 'center',
-              background: 'rgba(255,255,255,.04)',
-              border: '1px solid rgba(255,255,255,.07)',
+              background: 'rgba(255,255,255,.7)',
+              border: '1px solid rgba(171,81,242,.15)',
               borderRadius: 14,
-              color: '#64748b'
+              color: '#79758C'
             }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
               <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>
@@ -157,7 +157,7 @@ export default function OrganizationAlerts() {
                     ? 'rgba(255,255,255,.02)' 
                     : 'rgba(239, 68, 68, 0.05)',
                   border: alert.reviewed 
-                    ? '1px solid rgba(255,255,255,.07)' 
+                    ? '1px solid rgba(171,81,242,.15)' 
                     : '2px solid rgba(239, 68, 68, 0.3)',
                   borderRadius: 14,
                   padding: '24px 28px',
@@ -166,7 +166,7 @@ export default function OrganizationAlerts() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = alert.reviewed 
-                    ? 'rgba(255,255,255,.04)' 
+                    ? 'rgba(255,255,255,.7)' 
                     : 'rgba(239, 68, 68, 0.08)';
                 }}
                 onMouseLeave={(e) => {
@@ -180,10 +180,10 @@ export default function OrganizationAlerts() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                       <div style={{ fontSize: 28 }}>⚠️</div>
                       <div>
-                        <div style={{ fontSize: 20, fontWeight: 700, color: '#e2e8f0', marginBottom: 4 }}>
+                        <div style={{ fontSize: 20, fontWeight: 700, color: '#242226', marginBottom: 4 }}>
                           Low Confidence Score Detected
                         </div>
-                        <div style={{ fontSize: 13, color: '#64748b', fontFamily: 'monospace' }}>
+                        <div style={{ fontSize: 13, color: '#79758C', fontFamily: 'monospace' }}>
                           {new Date(alert.createdAt).toLocaleString()}
                         </div>
                       </div>
@@ -191,19 +191,19 @@ export default function OrganizationAlerts() {
                     
                     <div style={{
                       padding: '16px 20px',
-                      background: 'rgba(255,255,255,.04)',
-                      border: '1px solid rgba(255,255,255,.07)',
+                      background: 'rgba(255,255,255,.7)',
+                      border: '1px solid rgba(171,81,242,.15)',
                       borderRadius: 10,
                       marginBottom: 16
                     }}>
-                      <div style={{ fontSize: 14, color: '#94a3b8', marginBottom: 12, lineHeight: 1.6 }}>
+                      <div style={{ fontSize: 14, color: '#79758C', marginBottom: 12, lineHeight: 1.6 }}>
                         {alert.message}
                       </div>
                       
                       {/* Low Confidence Fields */}
                       {alert.lowConfidenceFields && alert.lowConfidenceFields.length > 0 && (
                         <div>
-                          <div style={{ fontSize: 12, color: '#64748b', marginBottom: 8, fontWeight: 600 }}>
+                          <div style={{ fontSize: 12, color: '#79758C', marginBottom: 8, fontWeight: 600 }}>
                             AFFECTED FIELDS:
                           </div>
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -230,7 +230,7 @@ export default function OrganizationAlerts() {
                     </div>
 
                     {/* Invoice Info */}
-                    <div style={{ display: 'flex', gap: 24, fontSize: 13, color: '#64748b' }}>
+                    <div style={{ display: 'flex', gap: 24, fontSize: 13, color: '#79758C' }}>
                       <div>
                         <span style={{ fontWeight: 600 }}>Invoice:</span>{' '}
                         {alert.invoiceId?.extractedData?.invoiceNumber || 'N/A'}
